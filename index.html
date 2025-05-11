@@ -5,77 +5,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Ceynova</title>
-    <!-- Font Awesome for icons (or swap in your own SVGs) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-…your-integrity-hash…" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" />
-    <style>
-        /* RESET & GLOBAL */
-        html {
-            scroll-behavior: smooth;
-        }
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-p1CmWQLyRrW9X+hwyKcXokoX8LfhD5YVgpZu6S+13g8K7z0F6PfBpuv5nkAQO8utEafp2zl6ZUI+3TA2h0f4Mw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  
 
+    <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-
-
-        html,
         body {
-            height: 100%;
-            overflow-x: hidden;
-            font-family: sans-serif;
-            background-color: #000;
-        }
-
-        /* SIDEBAR (desktop left / mobile bottom) */
-        .sidebar {
-            position: fixed;
-            top: 50%;
-            left: 20px;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            border-radius: 30px;
-            z-index: 1000;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-        }
-
-        .sidebar .nav {
-            list-style: none;
+            background: #000;
+            font-family: 'Inter', sans-serif;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            text-align: center;
+            padding: 0 1rem;
         }
 
-        .sidebar .nav-item a {
+        section.hero {
+            width: 100%;
+            max-width: 100vw;
+            height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
-            color: #fff;
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: background 0.3s;
-        }
-
-        .sidebar .nav-item a:hover,
-        .sidebar .nav-item.active a {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* HERO */
-        .hero {
             position: relative;
-            width: 100vw;
-            height: 100vh;
-            background: #000;
             overflow: hidden;
         }
 
@@ -91,45 +60,101 @@
         .hero-content {
             position: relative;
             z-index: 1;
-            height: 100%;
+        }
+
+        .line1 {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            flex-wrap: wrap;
+            font-size: clamp(1rem, 5vw, 2.5rem);
+            line-height: 1.2;
             color: #fff;
-            padding: 0 20px;
         }
 
-        .hero-content .tagline {
-            display: inline-block;
-            padding: 8px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
-            margin-bottom: 20px;
-            font-size: 1rem;
-            backdrop-filter: blur(5px);
+        .line1 .static {
+            margin-right: 1ch;
+            white-space: nowrap;
         }
 
-        .hero-content h1 {
-            font-size: 7.5rem;
+        .word-rotator {
+            height: 1.2em;
+            overflow: hidden;
+        }
+
+        .word-rotator ul {
+            list-style: none;
             margin: 0;
+            padding: 0;
+            animation: slide 8s infinite;
+        }
+
+        .word-rotator li {
+            height: 1.2em;
+            line-height: 1.2em;
+            text-align: left;
+            white-space: nowrap;
             background: linear-gradient(90deg, #FA812F, #F3C623);
             -webkit-background-clip: text;
-            color: transparent;
-            font-family: 'Share Tech', sans-serif;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            margin: 10px 0 30px;
-            color: #ddd;
-            line-height: 1.6rem;
+        @keyframes slide {
+
+            0%,
+            12.5% {
+                transform: translateY(0);
+            }
+
+            25%,
+            37.5% {
+                transform: translateY(-1.2em);
+            }
+
+            50%,
+            62.5% {
+                transform: translateY(-2.4em);
+            }
+
+            75%,
+            87.5% {
+                transform: translateY(-3.6em);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
         }
 
-        .hero-content .btns a {
+        .line2 {
+            margin-top: 0.5rem;
+            font-size: clamp(1rem, 5vw, 2.5rem);
+            line-height: 1.2;
+            color: #fff;
+            white-space: normal;
+            overflow-wrap: break-word;
+        }
+
+        .brand {
+            font-family: 'Share Tech', monospace;
+            font-size: clamp(3rem, 10vw, 9rem);
+            background: linear-gradient(90deg, #FA812F, #F3C623);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0.5rem 0;
+            white-space: nowrap;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            color: #a9b0bd;
+            word-wrap: break-word;
+            text-align: center;
+        }
+
+        section.hero .btns a {
             display: inline-block;
-            margin: 0 10px;
+            margin: 2rem 0;
             padding: 12px 24px;
             border-radius: 30px;
             text-decoration: none;
@@ -137,365 +162,425 @@
             transition: background 0.3s, opacity 0.3s;
         }
 
-        .hero-content .btns .explore {
+        section.hero .btns .explore {
             background: #fff;
             color: #000;
         }
 
-        .hero-content .btns .learn {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .hero-content .btns a:hover {
+        section.hero .btns a:hover {
             opacity: 0.8;
-        }
-
-        /* CONTENT BELOW HERO (optional) */
-        .content {
-            padding: 40px;
-        }
-
-        /* MOBILE: flip sidebar to bottom */
-        @media (max-width: 768px) {
-            .sidebar {
-                top: auto;
-                bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
-                left: 50%;
-                transform: translateX(-50%);
-                padding: 8px 16px;
-            }
-
-            .sidebar .nav {
-                flex-direction: row;
-                gap: 20px;
-            }
-
-            .content {
-                margin-left: 0;
-                padding: 20px 0px;
-                margin-bottom: calc(80px + 20px);
-            }
-
-            .hero-content h1 {
-                font-size: 5rem;
-            }
-
-            .container {
-                padding: 0 0px;
-                max-width: 100%;
-            }
         }
 
         .section-header {
-            position: relative;
-            z-index: 1;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            text-align: left;
-            color: #fff;
-            padding: 0 0px;
-        }
-
-        .section-header h1 {
-            font-size: 4rem;
-            margin: 0;
-            background: linear-gradient(90deg, #FA812F, #F3C623);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            margin: 10px 0 30px;
-            color: #ddd;
-            line-height: 1.6;
-        }
-
-        /* ─── Three Steps Section ─── */
-        .steps-section {
-            background: #000;
-            color: #fff;
-            padding: 60px 20px;
-        }
-
-        .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+            text-align: left;
         }
 
-        /* Grid: design spans left, dev+seo on right */
-        .steps-grid {
-            display: grid;
-            gap: 20px;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
-            grid-template-areas:
-                "design dev"
-                "design seo";
-        }
-
-        @media (max-width: 768px) {
-            .steps-grid {
-                grid-template-columns: 1fr;
-                grid-template-areas:
-                    "design"
-                    "dev"
-                    "seo";
-            }
-        }
-
-        /* Card base */
-        .step-card {
-            display: grid;
-            /* first row = just big enough for your text, second row = all the rest */
-            grid-template-rows: auto 1fr;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 20px 15px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .step-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-
-        .step-card p {
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        /* Place cards */
-        .step-design {
-            /* grid-area: design; */
-            grid-template-rows: auto auto !important;
-        }
-
-        .step-dev {
-            grid-area: dev;
-        }
-
-        .step-seo {
-            grid-area: seo;
-        }
-
-        /* Push images/icons to bottom */
-        .step-card .seo-icons {
-            margin-top: auto;
-        }
-
-        .step-card img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 8px;
-            align-self: end;
-        }
-
-        /* 2. Portrait for Design */
-        .step-design img {
-            width: 100%;
-            height: 260px;
-            justify-self: center;
-            transform: translateY(10%);
-            object-fit: cover;
-        }
-
-        /* 3. Landscape for Dev + SEO */
-        .step-dev img,
-        .step-seo img {
-            width: 100%;
-            height: 260px;
-            transform: translateY(10%);
-        }
-
-        /* ───── Contact Section Styles ───── */
-        .contact {
-            background: #000;
-            color: #fff;
-            padding: 60px 20px;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 20px 0 0;
-            padding: 2px;
-        }
-
-        @media (max-width: 768px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .site-footer {
-                margin-bottom: 50px;
-            }
-        }
-
-        /* Left side */
-        .contact-info h1 {
-            font-size: 4rem;
+        .section-header-title {
+            font-size: clamp(2rem, 6vw, 3rem);
             margin: 0;
+            line-height: 1.1;
             background: linear-gradient(90deg, #FA812F, #F3C623);
             -webkit-background-clip: text;
-            color: transparent;
+            -webkit-text-fill-color: transparent;
         }
 
-        .contact-info p {
-            /* font-size: 1rem;
-            margin: 10px 0 30px;
-            color: #aaa; */
-            line-height: 1.6;
-
-            font-size: 1.2rem;
-            margin: 10px 0 30px;
-            color: #aaa;
+        .section-header-subtitle {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            margin: 0.5rem 0 0;
+            color: #a9b0bd;
+            line-height: 1.2;
         }
 
-        .contact-email {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 20px;
-            /* background: #fff; */
-            color: #fff;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-
-        .contact-email i {
-            margin-right: 8px;
-        }
-
-        .contact-email:hover {
-            opacity: 0.8;
-        }
-
-        /* Right side (form) */
-        .contact-form-wrapper {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px 20px;
-        }
-
-        #contact-form h3 {
-            margin-top: 0;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        #contact-form label {
-            display: block;
-            margin-bottom: 16px;
-            font-size: 0.9rem;
-            color: #ccc;
-        }
-
-        #contact-form label span {
-            display: block;
-            margin-bottom: 6px;
-        }
-
-        #contact-form input,
-        #contact-form textarea {
+        /* ─────────── Services Carousel ─────────── */
+        #services {
             width: 100%;
-            padding: 10px 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 1rem;
-            resize: vertical;
+            box-sizing: border-box;
+            padding: 0 1rem;
         }
 
-        #contact-form input::placeholder,
-        #contact-form textarea::placeholder {
-            color: #777;
-        }
-
-        #contact-form button {
-            display: block;
+        .service-cards {
             width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            background: #fff;
-            color: #000;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: opacity 0.3s;
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            justify-content: flex-start;
+            scroll-padding-left: 1rem;
+            scroll-padding-right: 1rem;
         }
 
-        #contact-form button:hover {
-            opacity: 0.8;
-        }
-
-        /* validation error styling */
-        input:invalid,
-        textarea:invalid {
-            border-color: #e74c3c;
-        }
-
-        /* hide when empty, show when not */
-        #form-status {
-            margin-top: 12px;
-            font-size: 0.95rem;
-        }
-
-        #form-status:empty {
+        .service-cards::-webkit-scrollbar {
             display: none;
         }
 
-        #form-status.success {
-            color: #2ecc71;
+        .service-card {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-sizing: border-box;
+            width: clamp(250px, 45%, 300px);
+            text-align: left;
         }
 
-        #form-status.error {
-            color: #e74c3c;
+        .service-card p {
+            padding-top: 1rem;
         }
 
-        .contact-lines {
-            margin-top: 20px;
+        .card-image {
+            display: block;
+            width: 150px;
+            height: 150px;
+            object-fit: fill;
+            margin: 0 auto 1rem;
         }
 
-        .contact-line {
+        .carousel-indicators {
             display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            margin-top: 20px;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
         }
 
-        .contact-line i {
-            font-size: 1.2rem;
-            color: #aaa;
-            margin-right: 8px;
+        .carousel-indicators .indicator {
+            width: 8px;
+            height: 8px;
+            background: #555;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .contact-line a {
-            color: #aaa;
-            text-decoration: none;
-            font-weight: 500;
+        .carousel-indicators .indicator.active {
+            background: #fff;
+        }
+
+        @media (min-width: 1024px) {
+            .service-cards {
+                width: 85%;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .carousel-indicators {
+                display: none;
+            }
+        }
+
+        /* ─────────── Partner Section ─────────── */
+        #partner {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 1rem;
+        }
+
+        /* grid of cards: 2 columns on desktop, 1 on narrow */
+        #partner .partner-cards {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem 1rem;
+            /* 2rem between rows, 1rem between cols */
+            padding: 1rem 1rem;
+        }
+
+        /* card styles: match your other service/contact cards */
+        #partner .partner-card {
+            /* background: #111; */
+            /* padding: 1.5rem; */
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+            /* left-align everything in the card */
+            text-align: left;
+        }
+
+        #partner .partner-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            color: #fff;
+        }
+
+        #partner .partner-card p {
+            line-height: 1.6;
+            color: #ccc;
             font-size: 1rem;
         }
 
-        /* ─────────── Site Footer ─────────── */
-        .site-footer {
+        #partner .partner-card h3,
+        #partner .partner-card p {
+            /* just in case headers or paragraphs were inheriting center */
+            text-align: left;
+        }
+
+        @media (min-width: 1024px) {
+            #partner .partner-cards {
+                width: 85%;
+                max-width: 1100px;
+                margin: 0 auto;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 1023px) {
+            #partner .partner-card {
+                margin-bottom: 1.5rem;
+                /* extra breathing room under every card */
+            }
+        }
+
+        /* ─── Testimonial Card Container ─── */
+        #testimonial .testimonial-card {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #111;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+            display: flex;
+            align-items: center;
+            column-gap: 2rem;
+            text-align: left;
+
+        }
+
+        /* ─── Quote on the Left ─── */
+        #testimonial blockquote {
+            flex: 1;
+            margin: 0;
+            color: #fff;
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+
+        #testimonial .testimonial-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #testimonial .testimonial-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        #testimonial .testimonial-name {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        #testimonial .testimonial-role {
+            color: #ccc;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            #testimonial .testimonial-card {
+                flex-direction: column;
+                align-items: center;
+                margin: 0 1rem;
+                width: auto;
+            }
+
+            #testimonial .testimonial-footer {
+                margin-top: 1.5rem;
+            }
+        }
+
+        /* ─────────── Contact Section ─────────── */
+        #contact .contact-grid {
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;               /* space between columns */
+  align-items: start;      /* top-align both columns */
+  margin-top: 2rem;        /* same gap as header’s margin-bottom */
+}
+
+        #contact {
+            padding: 4rem 1rem;
+            background: #000;
+
+        }
+
+        .contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.25rem;
+  color: #ccc;
+}
+
+.contact-item i {
+  font-size: 1.5rem;
+  color: #888;
+}
+
+.contact-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #111;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-form h2 {
+            color: #fff;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: .5rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: .75rem 1rem;
+            border: 1px solid #333;
+            border-radius: .75rem;
+            background: #000;
+            color: #eee;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #666;
+        }
+
+        .contact-form .error-message {
+            display: block;
+            margin-top: .25rem;
+            color: #f55;
+            font-size: .875rem;
+            visibility: hidden;
+        }
+
+        .contact-form .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: #fff;
+            color: #000;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: opacity .3s;
+        }
+
+        .contact-form .btn-submit:hover {
+            opacity: .8;
+        }
+
+        .form-success {
+            margin-top: 1rem;
+            color: #6f6;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        #services,
+        #contact {
+            align-self: stretch;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 1rem;
+        }
+
+        #contact {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        #contact .contact-form {
+            max-width: none;         
+  width: 100%;            
+  margin: 0;
+        }
+
+        @media (max-width: 768px) {
+  #contact .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;           
+  }
+  #contact .contact-info,
+  #contact .contact-form {
+    width: 100%;
+  }
+}
+
+        #form-status {
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        #form-status.success {
+            color: #6f6;
+        }
+
+        #form-status.error {
+            color: #f55;
+        }
+
+        .contact-form .required {
+            color: inherit;
+        }
+
+        section#services,
+    section#partner,
+    section#testimonial,
+    section#contact {
+      align-self: stretch;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 2.5rem 1rem;
+    }
+
+    .site-footer {
+        width: 100%;
             background: #000;
             padding: 20px 0 60px;
             /* no more border-top here */
@@ -523,908 +608,249 @@
             margin: 0;
         }
 
-
-        /* ─── Updated Choose Us Cards ─── */
-        .choose-section {
-            background: #000;
-            /* match services bg */
-            padding: 60px 20px;
-            color: #fff;
-        }
-
-        .choose-section .section-header h1 {
-            /* reuse your services gradient */
-            background: linear-gradient(90deg, #FA812F, #F3C623);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .choose-section .section-header p {
-            color: #ddd;
-        }
-
-        /* grid layout */
-        .choose-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 0;
-        }
-
         @media (max-width: 768px) {
-            .choose-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* each card */
-        .choose-item {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 20px;
-
-            /* add this: */
-            align-items: center;
-
-            background: rgba(255, 255, 255, 0.02);
-            /* border: 1px solid rgba(255, 255, 255, 0.1); */
-            border-radius: 16px;
-            padding: 20px;
-        }
-
-        /* big hand-written number */
-        .choose-item .number {
-            font-size: 60px;
-            line-height: 1;
-            color: #fff;
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            .choose-item .number {
-                font-size: 30px;
-                line-height: 1;
-                color: #fff;
-                opacity: 0.8;
-            }
-        }
-
-        /* title in same handwriting */
-        .choose-item .title {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-top: 10px;
-            -webkit-background-clip: text;
-        }
-
-        /* description in handwriting, slightly smaller */
-        .choose-item .desc {
-            font-size: 1rem;
-            color: #aaa;
-            margin-top: 8px;
-            line-height: 1.6;
-        }
-
-        /* ─── Testimonial Card in Why-Choose-Us ─── */
-        .testimonial-card {
-            /* match choose-grid’s width & centering */
-            /* max-width: 1000px; */
-            margin: 80px 20px 20px;
-            padding: 30px 10px;
-            /* thickness of the gradient frame */
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            line-height: 1.6;
-            font-size: 1.2rem;
-        }
-
-        .testimonial-inner {
-            /* switch from white to black */
-            background: #000;
-            border-radius: 14px;
-            /* a little smaller so the gradient shows */
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 2rem;
-            align-items: center;
-            /* vertical centering */
-        }
-
-        .testimonial-text {
-            color: #fff;
-            /* white text on black */
-        }
-
-        .author-meta {
-            margin-top: 1.5rem;
-            display: inline-flex;
-            align-items: center;
-            color: #aaa;
-            /* lighter grey for contrast */
-            font-size: 1rem;
-        }
-
-        .author-meta-mobile {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .author-meta {
-                display: none !important;
-            }
-
-            .author-meta-mobile {
-                display: block;
-                /* or display: flex; if you need horizontal layout */
-                margin-top: 2.5rem;
-            }
-        }
-
-        .author-name {
-            font-weight: 600;
-            color: #aaa;
-            /* keep name white */
-        }
-
-        /* rest of your author-avatar and mobile styles remain the same */
-        .author-separator {
-            margin: 0 0.5rem;
-        }
-
-        .author-title {
-            font-weight: 400;
-            color: #ddd;
-        }
-
-        .author-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .author-avatar-mobile {
-            display: none !important;
-        }
-
-        @media (max-width: 768px) {
-            .testimonial-inner {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .author-avatar {
-                /* margin: 1.5rem auto 0;
-                width: 100px;
-                height: 100px; */
-                display: none !important;
-            }
-
-            .author-avatar-mobile {
-                display: block !important;
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                object-fit: cover;
-                margin: 0.5rem auto 0;
-            }
-
-            .author-meta {
-                justify-content: center;
-            }
-        }
-
-        /* ─── Services “slide” animation ─── */
-        .animated-section-header {
-            display: flex;
-            align-items: center;
-            /* vertical centering of text and animation */
-            justify-content: flex-start;
-            /* left align everything */
-            flex-wrap: nowrap;
-        }
-
-        .animated-section-header>* {
-            margin: 0
-                /* top/side/bottom */
-                0
-                /* no left margin on the very first child */
-            ;
-        }
-
-        .animated-services-title {
-            font-size: 4rem;
-            /* same as .section-header h1 */
-            margin: 0;
-            /* reset any default spacing */
-            background: linear-gradient(90deg, #FA812F, #F3C623);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .animated-services-title,
-        .animation {
-            display: inline-block;
-            white-space: nowrap;
-            /* make sure nothing inside ever breaks */
-            align-items: start;
-        }
-
-        .animation>div>div {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            /* your existing keyframes will handle top/opacity */
-            animation: slideTitles 9s infinite;
-        }
-
-        .animated-section-header .animation {
-            position: relative;
-            width: 100%;
-            height: 4.5rem;
-            /* adjust to match your .services-title line-height */
-            overflow: hidden;
-            margin: 1rem 0;
-            /* optional spacing */
-        }
-
-        .services-ani-title {
-            font-size: 4rem;
-            /* same as .section-header h1 */
-            margin: 0;
-            /* reset any default spacing */
-            background: linear-gradient(90deg, #FA812F, #F3C623);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-        .animated-section-header .animation>div {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        .animated-section-header .animation>div>div {
-            /* center the text */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            /* start each slide just below the visible area */
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            height: 100%;
-
-            /* animate up, pause, then up out */
-            animation: slideTitles 9s infinite;
-        }
-
-        /* ─── Make the sliding words match your section-header H1 ─── */
-        .animated-section-header .services-title {
-            font-size: 4rem;
-            /* same as .section-header h1 */
-            margin: 0;
-            /* reset any default spacing */
-            background: linear-gradient(90deg, #FA812F, #F3C623);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-
-
-        /* stagger the three words by 3 seconds each */
-        .animated-section-header .animation .first>div {
-            animation-delay: 0s;
-        }
-
-        .animated-section-header .animation .second>div {
-            animation-delay: 3s;
-        }
-
-        .animated-section-header .animation .third>div {
-            animation-delay: 6s;
-        }
-
-        @keyframes slideTitles {
-
-            /* coming in */
-            0% {
-                top: 100%;
-                opacity: 0;
-            }
-
-            5% {
-                top: 0%;
-                opacity: 1;
-            }
-
-            /* stay visible */
-            30% {
-                top: 0%;
-                opacity: 1;
-            }
-
-            /* slide up out */
-            35% {
-                top: -100%;
-                opacity: 0;
-            }
-
-            /* stay hidden until next cycle */
-            100% {
-                top: -100%;
-                opacity: 0;
-            }
-        }
-
-
-        .pillars-section {
-            background: #000;
-            overflow: hidden;
-            /* hide the overflow so only one “window” shows */
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .pillars {
-            display: flex;
-            flex-wrap: nowrap;
-            /* keep everything on one line */
-            white-space: nowrap;
-            /* safeguard vs. accidental wraps */
-            /* animate over 20s, linear timing, infinite, left→right */
-            animation: scroll-right 20s linear infinite;
-        }
-
-        .pillars h2 {
-            flex: 0 0 auto;
-            /* don’t shrink or grow */
-            margin: 0 60px;
-            /* space between pillars */
-            color: #fff;
-            font-size: 1.8rem;
-        }
-
-        /* Two-Column Layout */
-        .services-content-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-        }
-
-        .services-header-col,
-        .services-accordion-col {
-            flex: 1;
-            /* each column takes 50% */
-        }
-
-        /* Center Accordion in Its Column */
-        .services-accordion-col {
-            display: flex;
-            justify-content: end;
-        }
-
-        /* Accordion Container */
-        .services-accordion-col .accordion,
-        .accordion {
-            width: 100%;
-        }
-
-        /* Accordion Items */
-        .accordion-item+.accordion-item {
-            margin-top: 1.5rem;
-        }
-
-        /* Accordion Header */
-        .accordion-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #444;
-            padding: 0.75rem 0;
-            font-size: 1.125rem;
-            cursor: pointer;
-            color: #fff;
-            /* ensure text is visible */
-        }
-
-        .accordion-header .title {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .accordion-icon {
-            font-size: 1.25rem;
-            color: #fff;
-            /* ensure icon is visible */
-            transition: transform 0.4s ease-in-out;
-        }
-
-        /* Accordion Content (Collapsed) */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0;
-            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-        }
-
-        .accordion-content p {
-            /* margin: 0; */
-            font-size: 1.2rem;
-            margin: 10px 0 30px;
-            color: #ddd;
-            line-height: 1.6;
-        }
-
-        /* Accordion Content (Expanded) */
-        .accordion-item.active .accordion-content {
-            padding: 0.75rem 0;
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Responsive (Stack on Mobile) */
-        @media (max-width: 768px) {
-            .services-content-row {
-                flex-direction: column;
-            }
-        }
-
-        .carousel {
-            /* width: 80%; */
-            /* max-width: 1000px; */
-            overflow-x: hidden;
-            overflow-y: visible;
-            padding: 1rem 0;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.6s ease-in-out;
-        }
-
-        .card {
-            flex: 0 0 30%;
-            margin: 0 1.5%;
-            background: #fff;
-            color: #111;
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card.active {
-            transform: scale(1.1);
-            /* ← enlarged active card */
-        }
-
-        .card-content {
-            padding: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .card-content h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-            font-weight: 600;
-        }
-
-        .card-content p {
-            font-size: 1rem;
-            line-height: 1.4;
-            font-weight: 400;
-        }
-
-        .card img {
-            width: 100%;
-            display: block;
-            object-fit: cover;
-            height: 180px;
-        }
-
-        @media (max-width: 768px) {
-
-            /* make the carousel itself edge-to-edge */
-            .carousel {
-                padding: 0;
-            }
-
-            /* force each card to take up 100% of the carousel width */
-            .carousel-track .card {
-                flex: 0 0 100% !important;
-                margin: 0 !important;
-                max-width: 100%;
-            }
-
-            /* optional: stop the “active” scale-up so you don’t get overflow at the edges */
-            .carousel-track .card.active {
-                transform: none !important;
+            .site-footer {
+                margin-bottom: 50px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- NAVBAR -->
-    <aside class="sidebar">
-        <ul class="nav">
-            <li class="nav-item active">
-                <a href="#home" title="Home"><i class="fas fa-home"></i></a>
-            </li>
-            <li class="nav-item">
-                <a href="#services" title="About"><i class="fas fa-podcast"></i></a>
-            </li>
-            <li class="nav-item">
-                <a href="#about" title="Gallery"><i class="fas fa-info"></i></a>
-            </li>
-            <li class="nav-item">
-                <a href="#contact" title="Upload"><i class="fas fa-phone"></i></a>
-            </li>
-        </ul>
-    </aside>
-
-    <!-- STARRY HERO -->
-    <section class="hero" id="home">
+    <section class="hero">
         <canvas id="starCanvas"></canvas>
         <div class="hero-content">
-            <div class="tagline">Sustainable • Reliable • Customizable</div>
-            <h1>CEYNOVA</h1>
-            <p>Building the Future of Digital Experiences</p>
+            <h1 class="line1">
+                <span class="static">Looking for</span>
+                <span class="word-rotator">
+                    <ul>
+                        <li>sustainable,</li>
+                        <li>reliable,</li>
+                        <li>scalable,</li>
+                        <li>innovative</li>
+                    </ul>
+                </span>
+            </h1>
+            <h1 class="line2">software development team?</h1>
+            <h1 class="brand">CEYNOVA</h1>
+            <p class="tagline">Your trusted partner in software solutions</p>
             <div class="btns">
-                <a href="#projects" class="explore">Contact</a>
-                <a href="#about" class="learn">Explore More &rarr;</a>
+                <a href="#contact" class="explore">Contact &rarr;</a>
             </div>
         </div>
     </section>
 
-    <main class="content">
-        <section id="services" class="steps-section">
-            <div class="container">
-                <div class="section-header">
-                    <h1>Our Services</h1>
-                    <p>Driving innovation through cutting-edge software development.</p>
-                </div>
-
-
-                <div class="carousel">
-                    <div class="carousel-track">
-                        <!-- originals -->
-                        <div class="card">
-                            <div class="card-content">
-                                <h3>Mobile</h3>
-                                <p>Crafting pixel-perfect, high-performance iOS & Android apps that delight users and
-                                    drive
-                                    engagement—built with clean architecture and best-in-class tooling.</p>
-                            </div>
-                            <img src="https://picsum.photos/200/300" alt="Project A">
-                        </div>
-                        <div class="card">
-                            <div class="card-content">
-                                <h3>Web</h3>
-                                <p>From single-page apps to complex enterprise dashboards, we deliver responsive,
-                                    SEO-friendly
-                                    web platforms powered by modern frameworks and rock-solid backends.</p>
-                            </div>
-                            <img src="https://picsum.photos/200/300" alt="Project B">
-                        </div>
-                        <div class="card">
-                            <div class="card-content">
-                                <h3>Custom Software Solutions</h3>
-                                <p>From concept to deployment, we build tailored, scalable software that fits your
-                                    unique workflows—integrating seamlessly with your systems and growing alongside your
-                                    business.</p>
-                            </div>
-                            <img src="https://picsum.photos/200/300" alt="Project C">
-                        </div>
-                        <div class="card">
-                            <div class="card-content">
-                                <h3>AI Integrations</h3>
-                                <p>Embed intelligent features—chatbots, recommendation engines, computer-vision
-                                    pipelines—into
-                                    your products to automate workflows and unlock new insights.</p>
-                            </div>
-                            <img src="https://picsum.photos/200/300" alt="Project D">
-                        </div>
-                        <div class="card">
-                            <div class="card-content">
-                                <h3>Consulations</h3>
-                                <p>A concise description of Project E.</p>
-                            </div>
-                            <img src="https://picsum.photos/200/300" alt="Project E">
-                        </div>
-                    </div>
-                </div>
-
-
-
+    <section id="services">
+        <div class="section-header">
+            <h2 class="section-header-title">Our Services</h2>
+            <p class="section-header-subtitle">
+                Driving innovation through cutting-edge software development
+            </p>
+        </div>
+        <div class="service-cards">
+            <div class="service-card">
+                <img src="alert.png" alt="Cloud Engineering" class="card-image" />
+                <h3>Software Engineering</h3>
+                <p>We specialize in recruiting and managing top-tier software engineers with the right mix of technical
+                    skills and problem-solving abilities.</p>
             </div>
-        </section>
 
-        <!-- <section class="pillars-section">
-            <div class="pillars"></div>
-        </section> -->
-
-
-        <section id="about" class="choose-section">
-            <div class="container">
-                <div class="section-header">
-                    <h1>Why Partner with Us</h1>
-                    <p>We combine expertise, passion, and a track record of success to turn your ideas into impact.</p>
-                </div>
-                <div class="choose-grid" id="choose-grid">
-                    <!-- cards will be injected here -->
-                </div>
+            <div class="service-card">
+                <img src="alert.png" alt="Cloud Engineering" class="card-image" />
+                <h3>Cloud Engineering</h3>
+                <p>Cloud chaos, no more. We’ll help you find the right specialists to build, configure and deploy your
+                    architecture at scale.</p>
             </div>
-        </section>
 
-        <section id="pillars" class="steps-section">
-            <div class="container">
-                <div class="services-content-row">
-                    <!-- 1st column: header -->
-                    <div class="services-header-col">
-                        <div class="section-header">
-                            <h1>Company Pillars</h1>
-                            <p>Our mission is guided by four foundational pillars. Together, they shape every line of
-                                code we write, every product we build, and every partnership we forge.</p>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <img src="alert.png" alt="Cloud Engineering" class="card-image" />
+                <h3>Data Engineering</h3>
+                <p>Get the most out of your data. We build reliable pipelines and warehouses that become the backbone of
+                    your analytics.</p>
+            </div>
 
-                    <!-- 2nd column: accordion -->
-                    <div class="services-accordion-col">
-                        <div class="accordion">
-                            <!-- CX -->
-                            <div class="accordion-item">
-                                <button class="accordion-header">
-                                    <span class="title">Sustainability</span>
-                                    <span class="accordion-icon">▼</span>
-                                </button>
-                                <div class="accordion-content">
-                                    <p>We build with future maintenance and environmental impact in mind—leveraging
-                                        efficient code, green-friendly hosting and reusable components.</p>
-                                </div>
-                            </div>
-                            <!-- BX -->
-                            <div class="accordion-item">
-                                <button class="accordion-header">
-                                    <span class="title">Reliability</span>
-                                    <span class="accordion-icon">▼</span>
-                                </button>
-                                <div class="accordion-content">
-                                    <p>Uptime SLAs, automated testing, and resilient architectures ensure your product
-                                        stays online and error-free under any load.</p>
-                                </div>
-                            </div>
-                            <!-- PX -->
-                            <div class="accordion-item">
-                                <button class="accordion-header">
-                                    <span class="title">Scalability</span>
-                                    <span class="accordion-icon">▼</span>
-                                </button>
-                                <div class="accordion-content">
-                                    <p>From microservices to serverless, we architect systems that scale seamlessly as
-                                        your user base—and data—balloons.</p>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <button class="accordion-header">
-                                    <span class="title">Customizability</span>
-                                    <span class="accordion-icon">▼</span>
-                                </button>
-                                <div class="accordion-content">
-                                    <p>Your brand, your vision: every UI component, workflow and integration is crafted
-                                        to fit your unique value proposition.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="service-card">
+                <img src="alert.png" alt="Cloud Engineering" class="card-image" />
+                <h3>AI Engineering</h3>
+                <p>Empower your business with AI: from proof-of-concepts to production, we bring machine learning to
+                    your workflows.</p>
+            </div>
+
+            <div class="service-card">
+                <img src="alert.png" alt="Cloud Engineering" class="card-image" />
+                <h3>AI Engineering</h3>
+                <p>Empower your business with AI: from proof-of-concepts to production, we bring machine learning to
+                    your workflows.</p>
+            </div>
+        </div>
+
+        <div class="carousel-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+        </div>
+    </section>
+
+    <section id="partner">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-header-title">Why Partner with Us</h2>
+                <p class="section-header-subtitle">
+                    We combine expertise, passion, and a track record of success to turn your ideas into impact.
+                </p>
+            </div>
+
+            <div class="partner-cards">
+                <div class="partner-card">
+                    <h3>Founded by Industry Expert</h3>
+                    <p>
+                        Benefit from the deep technical knowledge and strategic vision of a team led by recognized
+                        experts in the Google ecosystem.
+                    </p>
                 </div>
-                <!-- ─── Testimonial Card ─── -->
-                <div class="testimonial-card">
-                    <div class="testimonial-inner">
-                        <img src="dilum-dp.jpeg" alt="Dilum De Silva" class="author-avatar-mobile">
-                        <!-- LEFT COLUMN: quote + author-meta -->
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">
-                                “At CeyNova, we’re driven by a passion for transforming ideas into impactful software
-                                solutions. Our commitment to innovation, quality, and client success is at the heart of
-                                everything we do.”
-                            </p>
-                            <div class="author-meta">
-                                <span class="author-name">Dilum De Silva</span>
-                                <span class="author-separator">·</span>
-                                <span class="author-title">Founder of CeyNova</span>
-                            </div>
-                            <div class="author-meta-mobile">
-                                <span class="author-name">Dilum De Silva</span>
-                                <span class="author-title">Founder of CeyNova</span>
-                            </div>
-                        </div>
-
-                        <!-- RIGHT COLUMN: avatar only -->
-                        <img src="dilum-dp.jpeg" alt="Dilum De Silva" class="author-avatar">
-                    </div>
+                <div class="partner-card">
+                    <h3>Backed by Talented Developers Globally</h3>
+                    <p>
+                        Our distributed team of highly skilled developers from around the world brings diverse expertise
+                        and innovative solutions to your projects.
+                    </p>
+                </div>
+                <div class="partner-card">
+                    <h3>5+ Years of Proven Experience</h3>
+                    <p>
+                        Rely on our established track record of over five years in the industry, delivering successful
+                        and impactful software solutions for a variety of clients.
+                    </p>
+                </div>
+                <div class="partner-card">
+                    <h3>Customer-Focused Approach</h3>
+                    <p>
+                        We put your needs at the heart of every project, delivering tailored solutions, proactive
+                        communication, and dedicated support to ensure your satisfaction and success.
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
+    <section id="testimonial">
+        <div class="container">
+            <div class="testimonial-card">
+                <blockquote>
+                    “At CeyNova, we’re driven by a passion for transforming ideas into impactful software solutions. Our
+                    commitment to innovation, quality, and client success is at the heart of everything we do.”
+                </blockquote>
 
-
-
-        <!-- ───── Contact Section ───── -->
-        <section class="contact" id="contact">
-            <div class="container">
-                <div class="section-header">
-                    <h1>Let's Connect</h1>
-                    <p>Have a question or a project in mind?</p>
-                </div>
-                <div class="contact-grid">
-                    <!-- Left panel: heading + mailto -->
-                    <div class="contact-info">
-                        <p>Connecting with us is easy! Reach out through your preferred channel – email or mobile –
-                            using the details below.</p>
-                        <div class="contact-lines">
-                            <div class="contact-line">
-                                <i class="fas fa-envelope"></i>
-                                <a href="mailto:ceynovait@gmail.com">ceynovait@gmail.com</a>
-                            </div>
-                            <div class="contact-line">
-                                <i class="fas fa-phone"></i>
-                                <a href="tel:+642108335719">+64 21 083 35719</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right panel: the form -->
-                    <div class="contact-form-wrapper">
-                        <form id="contact-form">
-                            <h3>Get in touch</h3>
-
-                            <label>
-                                <span>Name</span>
-                                <input type="text" name="name" placeholder="John Doe" required>
-                            </label>
-
-                            <label>
-                                <span>Company / Organization</span>
-                                <input type="text" name="company" placeholder="Your company (optional)">
-                            </label>
-
-                            <label>
-                                <span>Email</span>
-                                <input type="email" name="email" placeholder="you@example.com" required>
-                            </label>
-
-                            <label>
-                                <span>Phone Number</span>
-                                <input type="tel" name="phone" placeholder="+1 (555) 123-4567">
-                            </label>
-
-                            <label>
-                                <span>Message</span>
-                                <textarea name="message" rows="8" placeholder="Tell us more..." required></textarea>
-                            </label>
-
-                            <button type="submit">Send Message</button>
-
-                            <div id="form-status" role="alert" aria-live="polite"></div>
-                        </form>
-                    </div>
+                <div class="testimonial-footer">
+                    <img src="dilum.png" alt="Dilum De Silva" class="testimonial-avatar">
+                    <div class="testimonial-name">Dilum De Silva</div>
+                    <div class="testimonial-role">Founder of CeyNova</div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer class="site-footer">
+
+    <section id="contact">
+        <div class="container">
+          <div class="contact-grid">
+            <!-- Column 1: section header -->
+            <div class="contact-info">
+              <div class="section-header">
+                <h2 class="section-header-title">Let's Connect</h2>
+                <p class="section-header-subtitle">
+                  Have a project in mind? We’d love to hear from you.
+                </p>
+              </div>
+
+              <div class="contact-details">
+                <div class="contact-item">
+                  <i class="fa-solid fa-envelope"></i>
+                  <a href="mailto:ceynovait@gmail.com">ceynovait@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                  <i class="fa-solid fa-phone"></i>
+                  <a href="tel:+642108335719">+64 21 083 35719</a>
+                </div>
+              </div>
+              
+              
+  
+            </div>
+      
+            <!-- Column 2: form -->
+            <div class="contact-form">
+              <form id="contact-form" novalidate>
+                <h2>Get in touch</h2>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    <small class="error-message"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company / Organization</label>
+                    <input type="text" id="company" name="company" placeholder="Company (optional)">
+                    <small class="error-message"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <small class="error-message"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                    <small class="error-message"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Tell us more..."
+                        required></textarea>
+                    <small class="error-message"></small>
+                </div>
+                <button type="submit" class="btn-submit">Send Message</button>
+              </form>
+              <div id="form-status" aria-live="polite"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <footer class="site-footer">
         <!-- full-width <footer>, but this <hr> will be 80% wide -->
         <hr class="footer-line" />
         <div class="container">
-            <p>Copyright © 2025 • Ceynova • All Rights Reserved</p>
+            <p>Copyright © 2025 • Ceynova</p>
         </div>
     </footer>
 
     <script>
-        const track = document.querySelector('.carousel-track');
-        const originals = Array.from(track.children);
-        const originalCount = originals.length;
+        const container = document.querySelector('.service-cards');
+        const cards = Array.from(document.querySelectorAll('.service-card'));
+        const dots = Array.from(document.querySelectorAll('.indicator'));
 
-        originals.forEach(card => track.appendChild(card.cloneNode(true)));
-        const cards = Array.from(track.children);
-        const totalCount = cards.length;
-
-        const style = getComputedStyle(cards[0]);
-        const cardWidth =
-            cards[0].getBoundingClientRect().width +
-            parseFloat(style.marginLeft) +
-            parseFloat(style.marginRight);
-
-        let index = 0;
-        cards[1].classList.add('active');
-        track.style.transform = 'translateX(0)';
-
-        track.addEventListener('transitionend', () => {
-            if (index >= originalCount) {
-                track.style.transition = 'none';
-                index = index - originalCount;
-                track.style.transform = `translateX(-${index * cardWidth}px)`;
-                track.offsetHeight;
-                track.style.transition = 'transform 0.6s ease-in-out';
-            }
+        // on scroll, update active dot
+        container.addEventListener('scroll', () => {
+            const idx = Math.round(container.scrollLeft / (cards[0].offsetWidth + 16));
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
         });
 
-        setInterval(() => {
-            cards.forEach(c => c.classList.remove('active'));
-            index++;
-            track.style.transform = `translateX(-${index * cardWidth}px)`;
-            let center = index + 1;
-            if (center >= totalCount) center -= totalCount;
-            cards[center].classList.add('active');
-        }, 3000);
-
-        document.querySelectorAll('.accordion-item').forEach(item => {
-            const header = item.querySelector('.accordion-header');
-            const content = item.querySelector('.accordion-content');
-
-            header.addEventListener('click', () => {
-                const isOpen = item.classList.contains('active');
-
-                if (isOpen) {
-                    // collapse
-                    content.style.maxHeight = null;
-                    item.classList.remove('active');
-                } else {
-                    // expand to its scrollHeight + small buffer
-                    content.style.maxHeight = (content.scrollHeight + 10) + 'px';
-                    item.classList.add('active');
-                }
+        // on click dot, scroll to card
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                container.scrollTo({
+                    left: cards[i].offsetLeft - 16,
+                    behavior: 'smooth'
+                });
             });
         });
 
-
-        // NAV “active” toggling
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', () => {
-                document.querySelectorAll('.nav-item')
-                    .forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-            });
-        });
-
-        // 1. Grab all your sidebar links
-        const navLinks = document.querySelectorAll('.sidebar .nav-item a');
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault();                        // don’t jump instantly
-                const parentItem = link.parentElement;     // the <li> to activate
-
-                // 2. Toggle active class
-                document.querySelectorAll('.sidebar .nav-item')
-                    .forEach(item => item.classList.remove('active'));
-                parentItem.classList.add('active');
-
-                // 3. Smooth-scroll to the section
-                const targetID = link.getAttribute('href').slice(1);
-                const targetEl = document.getElementById(targetID);
-                if (targetEl) {
-                    targetEl.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // STARFIELD: drift + twinkle + wrap
         (function () {
             const canvas = document.getElementById('starCanvas');
             const ctx = canvas.getContext('2d');
@@ -1438,7 +864,7 @@
 
             function initStars() {
                 stars = [];
-                const count = Math.floor((W * H) / 3000); // ↑ tweak divisor for density
+                const count = Math.floor((W * H) / 3000);
                 for (let i = 0; i < count; i++) {
                     stars.push({
                         x: Math.random() * W,
@@ -1484,108 +910,48 @@
             animate();
         })();
 
-        document.getElementById('contact-form').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const form = e.target;
-            const statusDiv = document.getElementById('form-status');
+        document
+            .getElementById('contact-form')
+            .addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const form = e.target;
+                const statusDiv = document.getElementById('form-status');
 
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
-
-            const endpoint = 'https://formspree.io/f/mvgaqyae';
-            const formData = new FormData(form);
-
-            try {
-                const res = await fetch(endpoint, {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                });
-                if (res.ok) {
-                    statusDiv.textContent = "Thanks for reaching out! We’ll be in touch soon.";
-                    statusDiv.className = 'success';
-                    form.reset();
-                } else {
-                    const data = await res.json();
-                    throw new Error(data.error || 'Submission failed');
+                // HTML5 validation
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
                 }
-            } catch (err) {
-                statusDiv.textContent = "Oops! There was a problem sending your message.";
-                statusDiv.className = 'error';
-                console.error(err);
-            }
 
-            // clear the message after 10 seconds
-            setTimeout(() => {
-                statusDiv.textContent = '';
-                statusDiv.className = '';
-            }, 10000);
-        });
+                const endpoint = 'https://formspree.io/f/mvgaqyae';
+                const formData = new FormData(form);
 
-        // Data for the four “Choose Us” items
-        const choices = [
-            {
-                icon: 'fa-award',  // 🏆
-                title: 'Founded by Industry Expert',
-                desc: 'Benefit from the deep technical knowledge and strategic vision of a team led by recognized experts in the Google ecosystem.'
-            },
-            {
-                icon: 'fa-users',  // 👥
-                title: 'Backed by Talented Developers Globally',
-                desc: 'Our distributed team of highly skilled developers from around the world brings diverse expertise and innovative solutions to your projects.'
-            },
-            {
-                icon: 'fa-briefcase',  // 💼
-                title: '5+ Years of Proven Experience',
-                desc: 'Rely on our established track record of over five years in the industry, delivering successful and impactful software solutions for a variety of clients.'
-            },
-            {
-                icon: 'fa-heart',  // ❤️
-                title: 'Customer-Focused Approach',
-                desc: 'We put your needs at the heart of every project, delivering tailored solutions, proactive communication, and dedicated support to ensure your satisfaction and success.'
-            }
-        ];
+                try {
+                    const res = await fetch(endpoint, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (res.ok) {
+                        statusDiv.textContent = "Thanks for reaching out! We’ll be in touch soon.";
+                        statusDiv.className = 'success';
+                        form.reset();
+                    } else {
+                        const data = await res.json();
+                        throw new Error(data.error || 'Submission failed');
+                    }
+                } catch (err) {
+                    statusDiv.textContent = "Oops! There was a problem sending your message.";
+                    statusDiv.className = 'error';
+                    console.error(err);
+                }
 
-        const grid = document.getElementById('choose-grid');
-        choices.forEach(({ icon, title, desc }) => {
-            const card = document.createElement('div');
-            card.className = 'choose-item';
-            card.innerHTML = `
-            
-            <div>
-                <div class="title">${title}</div>
-                <div class="desc">${desc}</div>
-            </div>
-            `;
-            grid.appendChild(card);
-        });
-
-        // <i class="fas ${icon}"></i>
-
-        const pillars = [
-            'Sustainable',
-            'Reliable',
-            'Scalable',
-            'Innovative',
-            'Efficient',
-            'Secure'
-        ];
-
-        // 2) grab the container
-        const container = document.querySelector('.pillars');
-
-        // 3) inject one <h2> per item
-        pillars.forEach(text => {
-            const h2 = document.createElement('h2');
-            h2.textContent = text;
-            container.appendChild(h2);
-        });
-
-        // 4) clone them so we can loop seamlessly
-        //    now the full set is exactly twice as wide as the viewport
-        container.innerHTML += container.innerHTML;
+                // clear the message after 10 seconds
+                setTimeout(() => {
+                    statusDiv.textContent = '';
+                    statusDiv.className = '';
+                }, 10000);
+            });
     </script>
 </body>
 
