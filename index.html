@@ -6,13 +6,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Ceynova</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap">
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-p1CmWQLyRrW9X+hwyKcXokoX8LfhD5YVgpZu6S+13g8K7z0F6PfBpuv5nkAQO8utEafp2zl6ZUI+3TA2h0f4Mw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-…your-integrity-hash…" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" />
   
 
     <style>
@@ -21,6 +17,10 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        html {
+  scroll-behavior: smooth;
+}
 
         body {
             background: #000;
@@ -613,10 +613,63 @@
                 margin-bottom: 50px;
             }
         }
+
+        /* ─────────── Bottom Navigation ─────────── */
+.bottom-nav {
+  position: fixed;
+  /* respect safe-area on iOS, fallback to 1rem */
+  bottom: env(safe-area-inset-bottom, 1rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  z-index: 1000;
+  margin-bottom: 2rem;
+}
+.bottom-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: background 0.3s, color 0.3s;
+}
+.bottom-nav a.active {
+  background: #fff;
+  color: #000;
+}
+/* shrink pill and icons a bit on really small screens */
+@media (max-width: 320px) {
+  .bottom-nav {
+    padding: 0.25rem 0.5rem;
+    gap: 1rem;
+  }
+  .bottom-nav a {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+}
+
     </style>
 </head>
 
 <body>
+    <nav class="bottom-nav">
+        <a href="#services"><i class="fas fa-podcast"></i></a>
+        <a href="#partner"><i class="fas fa-user"></i></a>
+        <a href="#contact"><i class="fas fa-phone"></i></a>
+      </nav>
+      
+
     <section class="hero">
         <canvas id="starCanvas"></canvas>
         <div class="hero-content">
