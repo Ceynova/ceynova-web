@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Starry Hero with Sidebar Nav</title>
+    <title>Ceynova</title>
     <!-- Font Awesome for icons (or swap in your own SVGs) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-…your-integrity-hash…" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -980,6 +980,80 @@
                 flex-direction: column;
             }
         }
+
+        .carousel {
+            /* width: 80%; */
+            /* max-width: 1000px; */
+            overflow-x: hidden;
+            overflow-y: visible;
+            padding: 1rem 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .card {
+            flex: 0 0 30%;
+            margin: 0 1.5%;
+            background: #fff;
+            color: #111;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card.active {
+            transform: scale(1.1);
+            /* ← enlarged active card */
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .card-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        .card-content p {
+            font-size: 1rem;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .card img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: 180px;
+        }
+
+        @media (max-width: 768px) {
+
+            /* make the carousel itself edge-to-edge */
+            .carousel {
+                padding: 0;
+            }
+
+            /* force each card to take up 100% of the carousel width */
+            .carousel-track .card {
+                flex: 0 0 100% !important;
+                margin: 0 !important;
+                max-width: 100%;
+            }
+
+            /* optional: stop the “active” scale-up so you don’t get overflow at the edges */
+            .carousel-track .card.active {
+                transform: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -1023,48 +1097,59 @@
                     <h1>Our Services</h1>
                     <p>Driving innovation through cutting-edge software development.</p>
                 </div>
-                
-                <div class="steps-grid">
-                    <!-- DESIGN -->
-                    <div class="step-card step-design">
-                        <h3>Mobile</h3>
-                        <p>
-                            Crafting pixel-perfect, high-performance iOS & Android apps that delight users and drive
-                            engagement—built with clean architecture and best-in-class tooling.
-                        </p>
-                        <img src="mobile.png" alt="Design mockup" />
-                    </div>
-
-                    <div class="step-card step-design">
-                        <h3>Web</h3>
-                        <p>
-                            From single-page apps to complex enterprise dashboards, we deliver responsive, SEO-friendly
-                            web platforms powered by modern frameworks and rock-solid backends.
-                        </p>
-                        <img src="mobile.png" alt="Design mockup" />
-                    </div>
 
 
-                    <!-- DEVELOPMENT -->
-                    <div class="step-card step-dev">
-                        <h3>Custom Software Solutions</h3>
-                        <p>
-                            From concept to deployment, we build tailored, scalable software that fits your unique workflows—integrating seamlessly with your systems and growing alongside your business.
-                        </p>
-                        <img src="mobile.png" alt="Development mockup" />
-                    </div>
-
-                    <!-- SEO -->
-                    <!-- NEW SEO CARD -->
-                    <div class="step-card step-seo">
-                        <h3>AI Integrations</h3>
-                        <p>
-                            Embed intelligent features—chatbots, recommendation engines, computer-vision pipelines—into
-                            your products to automate workflows and unlock new insights.
-                        </p>
-                        <img src="mobile.png" alt="SEO mockup" />
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <!-- originals -->
+                        <div class="card">
+                            <div class="card-content">
+                                <h3>Mobile</h3>
+                                <p>Crafting pixel-perfect, high-performance iOS & Android apps that delight users and
+                                    drive
+                                    engagement—built with clean architecture and best-in-class tooling.</p>
+                            </div>
+                            <img src="https://picsum.photos/200/300" alt="Project A">
+                        </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <h3>Web</h3>
+                                <p>From single-page apps to complex enterprise dashboards, we deliver responsive,
+                                    SEO-friendly
+                                    web platforms powered by modern frameworks and rock-solid backends.</p>
+                            </div>
+                            <img src="https://picsum.photos/200/300" alt="Project B">
+                        </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <h3>Custom Software Solutions</h3>
+                                <p>From concept to deployment, we build tailored, scalable software that fits your
+                                    unique workflows—integrating seamlessly with your systems and growing alongside your
+                                    business.</p>
+                            </div>
+                            <img src="https://picsum.photos/200/300" alt="Project C">
+                        </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <h3>AI Integrations</h3>
+                                <p>Embed intelligent features—chatbots, recommendation engines, computer-vision
+                                    pipelines—into
+                                    your products to automate workflows and unlock new insights.</p>
+                            </div>
+                            <img src="https://picsum.photos/200/300" alt="Project D">
+                        </div>
+                        <div class="card">
+                            <div class="card-content">
+                                <h3>Consulations</h3>
+                                <p>A concise description of Project E.</p>
+                            </div>
+                            <img src="https://picsum.photos/200/300" alt="Project E">
+                        </div>
                     </div>
                 </div>
+
+
+
             </div>
         </section>
 
@@ -1251,6 +1336,43 @@
     </footer>
 
     <script>
+        const track = document.querySelector('.carousel-track');
+        const originals = Array.from(track.children);
+        const originalCount = originals.length;
+
+        originals.forEach(card => track.appendChild(card.cloneNode(true)));
+        const cards = Array.from(track.children);
+        const totalCount = cards.length;
+
+        const style = getComputedStyle(cards[0]);
+        const cardWidth =
+            cards[0].getBoundingClientRect().width +
+            parseFloat(style.marginLeft) +
+            parseFloat(style.marginRight);
+
+        let index = 0;
+        cards[1].classList.add('active');
+        track.style.transform = 'translateX(0)';
+
+        track.addEventListener('transitionend', () => {
+            if (index >= originalCount) {
+                track.style.transition = 'none';
+                index = index - originalCount;
+                track.style.transform = `translateX(-${index * cardWidth}px)`;
+                track.offsetHeight;
+                track.style.transition = 'transform 0.6s ease-in-out';
+            }
+        });
+
+        setInterval(() => {
+            cards.forEach(c => c.classList.remove('active'));
+            index++;
+            track.style.transform = `translateX(-${index * cardWidth}px)`;
+            let center = index + 1;
+            if (center >= totalCount) center -= totalCount;
+            cards[center].classList.add('active');
+        }, 3000);
+
         document.querySelectorAll('.accordion-item').forEach(item => {
             const header = item.querySelector('.accordion-header');
             const content = item.querySelector('.accordion-content');
