@@ -11,11 +11,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" />
     <style>
         /* RESET & GLOBAL */
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
+
 
         html,
         body {
@@ -118,6 +124,7 @@
             font-size: 1.2rem;
             margin: 10px 0 30px;
             color: #ddd;
+            line-height: 1.6rem;
         }
 
         .hero-content .btns a {
@@ -269,7 +276,8 @@
 
         /* Place cards */
         .step-design {
-            grid-area: design;
+            /* grid-area: design; */
+            grid-template-rows: auto auto !important;
         }
 
         .step-dev {
@@ -295,22 +303,23 @@
 
         /* 2. Portrait for Design */
         .step-design img {
-            width: auto;
+            width: 100%;
             height: 260px;
             justify-self: center;
             transform: translateY(10%);
+            object-fit: cover;
         }
 
         /* 3. Landscape for Dev + SEO */
         .step-dev img,
         .step-seo img {
             width: 100%;
-            height: 140px;
-            transform: translateY(20%);
+            height: 260px;
+            transform: translateY(10%);
         }
 
         /* ───── Contact Section Styles ───── */
-        .contact-section {
+        .contact {
             background: #000;
             color: #fff;
             padding: 60px 20px;
@@ -321,12 +330,17 @@
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             margin: 20px 0 0;
+            padding: 2px;
         }
 
         @media (max-width: 768px) {
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
+            }
+
+            .site-footer {
+                margin-bottom: 50px;
             }
         }
 
@@ -483,7 +497,7 @@
         /* ─────────── Site Footer ─────────── */
         .site-footer {
             background: #000;
-            padding: 20px 0;
+            padding: 20px 0 60px;
             /* no more border-top here */
         }
 
@@ -553,14 +567,14 @@
             align-items: center;
 
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* border: 1px solid rgba(255, 255, 255, 0.1); */
             border-radius: 16px;
             padding: 20px;
         }
 
         /* big hand-written number */
         .choose-item .number {
-            font-size: 40px;
+            font-size: 60px;
             line-height: 1;
             color: #fff;
             opacity: 0.8;
@@ -568,7 +582,7 @@
 
         @media (max-width: 768px) {
             .choose-item .number {
-                font-size: 25px;
+                font-size: 30px;
                 line-height: 1;
                 color: #fff;
                 opacity: 0.8;
@@ -595,8 +609,8 @@
         .testimonial-card {
             /* match choose-grid’s width & centering */
             /* max-width: 1000px; */
-            margin: 20px 0 0;
-            padding: 2px;
+            margin: 80px 20px 20px;
+            padding: 30px 10px;
             /* thickness of the gradient frame */
             border-radius: 16px;
             background: rgba(255, 255, 255, 0.02);
@@ -632,6 +646,22 @@
             font-size: 1rem;
         }
 
+        .author-meta-mobile {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .author-meta {
+                display: none !important;
+            }
+
+            .author-meta-mobile {
+                display: block;
+                /* or display: flex; if you need horizontal layout */
+                margin-top: 2.5rem;
+            }
+        }
+
         .author-name {
             font-weight: 600;
             color: #aaa;
@@ -655,6 +685,10 @@
             object-fit: cover;
         }
 
+        .author-avatar-mobile {
+            display: none !important;
+        }
+
         @media (max-width: 768px) {
             .testimonial-inner {
                 grid-template-columns: 1fr;
@@ -662,9 +696,19 @@
             }
 
             .author-avatar {
-                margin: 1.5rem auto 0;
+                /* margin: 1.5rem auto 0;
+                width: 100px;
+                height: 100px; */
+                display: none !important;
+            }
+
+            .author-avatar-mobile {
+                display: block !important;
                 width: 100px;
                 height: 100px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin: 0.5rem auto 0;
             }
 
             .author-meta {
@@ -817,6 +861,125 @@
                 opacity: 0;
             }
         }
+
+
+        .pillars-section {
+            background: #000;
+            overflow: hidden;
+            /* hide the overflow so only one “window” shows */
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .pillars {
+            display: flex;
+            flex-wrap: nowrap;
+            /* keep everything on one line */
+            white-space: nowrap;
+            /* safeguard vs. accidental wraps */
+            /* animate over 20s, linear timing, infinite, left→right */
+            animation: scroll-right 20s linear infinite;
+        }
+
+        .pillars h2 {
+            flex: 0 0 auto;
+            /* don’t shrink or grow */
+            margin: 0 60px;
+            /* space between pillars */
+            color: #fff;
+            font-size: 1.8rem;
+        }
+
+        /* Two-Column Layout */
+        .services-content-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .services-header-col,
+        .services-accordion-col {
+            flex: 1;
+            /* each column takes 50% */
+        }
+
+        /* Center Accordion in Its Column */
+        .services-accordion-col {
+            display: flex;
+            justify-content: end;
+        }
+
+        /* Accordion Container */
+        .services-accordion-col .accordion,
+        .accordion {
+            width: 100%;
+        }
+
+        /* Accordion Items */
+        .accordion-item+.accordion-item {
+            margin-top: 1.5rem;
+        }
+
+        /* Accordion Header */
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #444;
+            padding: 0.75rem 0;
+            font-size: 1.125rem;
+            cursor: pointer;
+            color: #fff;
+            /* ensure text is visible */
+        }
+
+        .accordion-header .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .accordion-icon {
+            font-size: 1.25rem;
+            color: #fff;
+            /* ensure icon is visible */
+            transition: transform 0.4s ease-in-out;
+        }
+
+        /* Accordion Content (Collapsed) */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+        }
+
+        .accordion-content p {
+            /* margin: 0; */
+            font-size: 1.2rem;
+            margin: 10px 0 30px;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        /* Accordion Content (Expanded) */
+        .accordion-item.active .accordion-content {
+            padding: 0.75rem 0;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive (Stack on Mobile) */
+        @media (max-width: 768px) {
+            .services-content-row {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 
@@ -843,9 +1006,9 @@
     <section class="hero" id="home">
         <canvas id="starCanvas"></canvas>
         <div class="hero-content">
-            <div class="tagline">Innovative • Creative • Impactful</div>
+            <div class="tagline">Sustainable • Reliable • Customizable</div>
             <h1>CEYNOVA</h1>
-            <p>Building the Future of Software, Today.</p>
+            <p>Building the Future of Digital Experiences</p>
             <div class="btns">
                 <a href="#projects" class="explore">Contact</a>
                 <a href="#about" class="learn">Explore More &rarr;</a>
@@ -860,45 +1023,35 @@
                     <h1>Our Services</h1>
                     <p>Driving innovation through cutting-edge software development.</p>
                 </div>
-                <!-- <div class="animated-section-header">
-                    <h1 class="animated-services-title">We Provide</h1>
-                    <section class="animation">
-                        <div class="first">
-                            <div>
-                                <h1 class="services-ani-title">Sustainable</h1>
-                            </div>
-                        </div>
-                        <div class="second">
-                            <div>
-                                <h1 class="services-ani-title">Reliable</h1>
-                            </div>
-                        </div>
-                        <div class="third">
-                            <div>
-                                <h1 class="services-ani-title">Scalable</h1>
-                            </div>
-                        </div>
-                    </section>
-                    <h1 class="services-title">Solutions</h1>
-                </div> -->
-
+                
                 <div class="steps-grid">
                     <!-- DESIGN -->
                     <div class="step-card step-design">
                         <h3>Mobile</h3>
                         <p>
-                            Native and cross-platform apps for seamless on-the-go experiences.
+                            Crafting pixel-perfect, high-performance iOS & Android apps that delight users and drive
+                            engagement—built with clean architecture and best-in-class tooling.
                         </p>
-                        <img src="https://picsum.photos/seed/design/200/300" alt="Design mockup" />
+                        <img src="mobile.png" alt="Design mockup" />
                     </div>
+
+                    <div class="step-card step-design">
+                        <h3>Web</h3>
+                        <p>
+                            From single-page apps to complex enterprise dashboards, we deliver responsive, SEO-friendly
+                            web platforms powered by modern frameworks and rock-solid backends.
+                        </p>
+                        <img src="mobile.png" alt="Design mockup" />
+                    </div>
+
 
                     <!-- DEVELOPMENT -->
                     <div class="step-card step-dev">
-                        <h3>Web</h3>
+                        <h3>Custom Software Solutions</h3>
                         <p>
-                            Responsive websites that engage users and boost conversions.
+                            From concept to deployment, we build tailored, scalable software that fits your unique workflows—integrating seamlessly with your systems and growing alongside your business.
                         </p>
-                        <img src="https://picsum.photos/seed/development/400/200" alt="Development mockup" />
+                        <img src="mobile.png" alt="Development mockup" />
                     </div>
 
                     <!-- SEO -->
@@ -906,27 +1059,97 @@
                     <div class="step-card step-seo">
                         <h3>AI Integrations</h3>
                         <p>
-                            Smart chatbots and interfaces powered by machine learning.
+                            Embed intelligent features—chatbots, recommendation engines, computer-vision pipelines—into
+                            your products to automate workflows and unlock new insights.
                         </p>
-                        <img src="https://picsum.photos/seed/development/400/200" alt="SEO mockup" />
+                        <img src="mobile.png" alt="SEO mockup" />
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- <section class="pillars-section">
+            <div class="pillars"></div>
+        </section> -->
+
+
         <section id="about" class="choose-section">
             <div class="container">
                 <div class="section-header">
-                    <h1>Our Expertise, Your Success</h1>
+                    <h1>Why Partner with Us</h1>
                     <p>We combine expertise, passion, and a track record of success to turn your ideas into impact.</p>
                 </div>
                 <div class="choose-grid" id="choose-grid">
                     <!-- cards will be injected here -->
                 </div>
+            </div>
+        </section>
 
+        <section id="pillars" class="steps-section">
+            <div class="container">
+                <div class="services-content-row">
+                    <!-- 1st column: header -->
+                    <div class="services-header-col">
+                        <div class="section-header">
+                            <h1>Company Pillars</h1>
+                            <p>Our mission is guided by four foundational pillars. Together, they shape every line of
+                                code we write, every product we build, and every partnership we forge.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2nd column: accordion -->
+                    <div class="services-accordion-col">
+                        <div class="accordion">
+                            <!-- CX -->
+                            <div class="accordion-item">
+                                <button class="accordion-header">
+                                    <span class="title">Sustainability</span>
+                                    <span class="accordion-icon">▼</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>We build with future maintenance and environmental impact in mind—leveraging
+                                        efficient code, green-friendly hosting and reusable components.</p>
+                                </div>
+                            </div>
+                            <!-- BX -->
+                            <div class="accordion-item">
+                                <button class="accordion-header">
+                                    <span class="title">Reliability</span>
+                                    <span class="accordion-icon">▼</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Uptime SLAs, automated testing, and resilient architectures ensure your product
+                                        stays online and error-free under any load.</p>
+                                </div>
+                            </div>
+                            <!-- PX -->
+                            <div class="accordion-item">
+                                <button class="accordion-header">
+                                    <span class="title">Scalability</span>
+                                    <span class="accordion-icon">▼</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>From microservices to serverless, we architect systems that scale seamlessly as
+                                        your user base—and data—balloons.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header">
+                                    <span class="title">Customizability</span>
+                                    <span class="accordion-icon">▼</span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>Your brand, your vision: every UI component, workflow and integration is crafted
+                                        to fit your unique value proposition.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- ─── Testimonial Card ─── -->
                 <div class="testimonial-card">
                     <div class="testimonial-inner">
+                        <img src="dilum-dp.jpeg" alt="Dilum De Silva" class="author-avatar-mobile">
                         <!-- LEFT COLUMN: quote + author-meta -->
                         <div class="testimonial-content">
                             <p class="testimonial-text">
@@ -939,15 +1162,21 @@
                                 <span class="author-separator">·</span>
                                 <span class="author-title">Founder of CeyNova</span>
                             </div>
+                            <div class="author-meta-mobile">
+                                <span class="author-name">Dilum De Silva</span>
+                                <span class="author-title">Founder of CeyNova</span>
+                            </div>
                         </div>
 
                         <!-- RIGHT COLUMN: avatar only -->
                         <img src="dilum-dp.jpeg" alt="Dilum De Silva" class="author-avatar">
                     </div>
                 </div>
-
             </div>
         </section>
+
+
+
 
         <!-- ───── Contact Section ───── -->
         <section class="contact" id="contact">
@@ -1022,12 +1251,54 @@
     </footer>
 
     <script>
+        document.querySelectorAll('.accordion-item').forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            const content = item.querySelector('.accordion-content');
+
+            header.addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+
+                if (isOpen) {
+                    // collapse
+                    content.style.maxHeight = null;
+                    item.classList.remove('active');
+                } else {
+                    // expand to its scrollHeight + small buffer
+                    content.style.maxHeight = (content.scrollHeight + 10) + 'px';
+                    item.classList.add('active');
+                }
+            });
+        });
+
+
         // NAV “active” toggling
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', () => {
                 document.querySelectorAll('.nav-item')
                     .forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
+            });
+        });
+
+        // 1. Grab all your sidebar links
+        const navLinks = document.querySelectorAll('.sidebar .nav-item a');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();                        // don’t jump instantly
+                const parentItem = link.parentElement;     // the <li> to activate
+
+                // 2. Toggle active class
+                document.querySelectorAll('.sidebar .nav-item')
+                    .forEach(item => item.classList.remove('active'));
+                parentItem.classList.add('active');
+
+                // 3. Smooth-scroll to the section
+                const targetID = link.getAttribute('href').slice(1);
+                const targetEl = document.getElementById(targetID);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
 
@@ -1160,13 +1431,39 @@
             const card = document.createElement('div');
             card.className = 'choose-item';
             card.innerHTML = `
-      <div>
-        <div class="title">${title}</div>
-        <div class="desc">${desc}</div>
-      </div>
-    `;
+            
+            <div>
+                <div class="title">${title}</div>
+                <div class="desc">${desc}</div>
+            </div>
+            `;
             grid.appendChild(card);
         });
+
+        // <i class="fas ${icon}"></i>
+
+        const pillars = [
+            'Sustainable',
+            'Reliable',
+            'Scalable',
+            'Innovative',
+            'Efficient',
+            'Secure'
+        ];
+
+        // 2) grab the container
+        const container = document.querySelector('.pillars');
+
+        // 3) inject one <h2> per item
+        pillars.forEach(text => {
+            const h2 = document.createElement('h2');
+            h2.textContent = text;
+            container.appendChild(h2);
+        });
+
+        // 4) clone them so we can loop seamlessly
+        //    now the full set is exactly twice as wide as the viewport
+        container.innerHTML += container.innerHTML;
     </script>
 </body>
 
