@@ -3,35 +3,27 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceynova</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-…your-integrity-hash…" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" />
-  
-
+        integrity="sha512-…your-integrity-hash…" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         html {
-  scroll-behavior: smooth;
-}
+            scroll-behavior: smooth;
+        }
 
         body {
-            background: #000;
             font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            text-align: center;
-            padding: 0 1rem;
+            background: #000;
+            color: #fff;
         }
 
         section.hero {
@@ -46,6 +38,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
         #starCanvas {
@@ -73,7 +66,7 @@
         }
 
         .line1 .static {
-            margin-right: 1ch;
+            margin-right: 0.5ch;
             white-space: nowrap;
         }
 
@@ -145,6 +138,12 @@
             white-space: nowrap;
         }
 
+        @media (max-width: 600px) {
+            .brand {
+                font-size: clamp(4rem, 12vw, 9rem);
+            }
+        }
+
         .tagline {
             font-size: clamp(1rem, 4vw, 1.25rem);
             color: #a9b0bd;
@@ -194,367 +193,279 @@
             line-height: 1.2;
         }
 
-        /* ─────────── Services Carousel ─────────── */
-        #services {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 0 1rem;
+        .section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .service-cards {
-            width: 100%;
+        @media (max-width: 600px) {
+            .section {
+                padding: 60px 32px;
+            }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #FA812F, #F3C623);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        .cards {
             display: flex;
-            gap: 1rem;
-            padding: 1rem 1rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            justify-content: flex-start;
-            scroll-padding-left: 1rem;
-            scroll-padding-right: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            width: 100%;
         }
 
-        .service-cards::-webkit-scrollbar {
-            display: none;
-        }
-
-        .service-card {
-            flex: 0 0 auto;
-            scroll-snap-align: start;
-            background: #fff;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            box-sizing: border-box;
-            width: clamp(250px, 45%, 300px);
-            text-align: left;
-        }
-
-        .service-card p {
-            padding-top: 1rem;
+        .card {
+            width: 300px;
+            height: 380px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
         }
 
         .card-image {
-            display: block;
-            width: 150px;
-            height: 150px;
-            object-fit: fill;
-            margin: 0 auto 1rem;
-        }
-
-        .carousel-indicators {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 16px;
         }
 
-        .carousel-indicators .indicator {
-            width: 8px;
-            height: 8px;
-            background: #555;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s;
+        .card-image img {
+            max-width: 150px;
+            height: auto;
         }
 
-        .carousel-indicators .indicator.active {
-            background: #fff;
-        }
-
-        @media (min-width: 1024px) {
-            .service-cards {
-                width: 85%;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .carousel-indicators {
-                display: none;
-            }
-        }
-
-        /* ─────────── Partner Section ─────────── */
-        #partner {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 0 1rem;
-        }
-
-        /* grid of cards: 2 columns on desktop, 1 on narrow */
-        #partner .partner-cards {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem 1rem;
-            /* 2rem between rows, 1rem between cols */
-            padding: 1rem 1rem;
-        }
-
-        /* card styles: match your other service/contact cards */
-        #partner .partner-card {
-            /* background: #111; */
-            /* padding: 1.5rem; */
-            border-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-
-            /* left-align everything in the card */
-            text-align: left;
-        }
-
-        #partner .partner-card h3 {
-            margin-bottom: 1rem;
+        .card-title {
             font-size: 1.25rem;
+            margin-bottom: 8px;
+            text-align: left;
             color: #fff;
         }
 
-        #partner .partner-card p {
-            line-height: 1.6;
-            color: #ccc;
+        .card-desc {
             font-size: 1rem;
-        }
-
-        #partner .partner-card h3,
-        #partner .partner-card p {
-            /* just in case headers or paragraphs were inheriting center */
+            line-height: 1.5;
             text-align: left;
+            flex: 1 1 auto;
+            color: #fff;
         }
 
-        @media (min-width: 1024px) {
-            #partner .partner-cards {
-                width: 85%;
-                max-width: 1100px;
-                margin: 0 auto;
-                grid-template-columns: repeat(2, 1fr);
+        .card hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 10px 0;
+        }
+
+        @media (max-width: 600px) {
+            .cards {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .card {
+                width: 100%;
+                max-width: none;
             }
         }
 
-        @media (max-width: 1023px) {
-            #partner .partner-card {
-                margin-bottom: 1.5rem;
-                /* extra breathing room under every card */
-            }
+        .features-section {
+            position: relative;
         }
 
-        /* ─── Testimonial Card Container ─── */
-        #testimonial .testimonial-card {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: #111;
-            border-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-
-            display: flex;
-            align-items: center;
-            column-gap: 2rem;
-            text-align: left;
-
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            height: 70%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle at center,
+                    rgba(250, 129, 47, 0.125) 0%,
+                    rgba(243, 198, 35, 0.125) 50%,
+                    transparent 100%);
+            filter: blur(100px);
+            z-index: -1;
+            pointer-events: none;
         }
 
-        /* ─── Quote on the Left ─── */
-        #testimonial blockquote {
-            flex: 1;
+        .feature-item {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            column-gap: 20px;
+            align-items: start;
+            margin-bottom: 40px;
+        }
+
+        .feature-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #FA812F, #F3C623);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        .feature-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 0 0 8px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .feature-desc {
+            font-size: 1rem;
+            line-height: 1.6;
             margin: 0;
             color: #fff;
-            font-size: 1.5rem;
-            line-height: 1.4;
         }
 
-        #testimonial .testimonial-footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .feature-item hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 20px 0 0;
+            width: 100%;
         }
 
-        #testimonial .testimonial-avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
+        @media (max-width: 600px) {
+            .feature-item {
+                grid-template-columns: 1fr;
+                row-gap: 12px;
+            }
+
+            .feature-number {
+                text-align: left;
+            }
         }
 
-        #testimonial .testimonial-name {
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.25rem;
-        }
-
-        #testimonial .testimonial-role {
-            color: #ccc;
-            opacity: 0.8;
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
 
         @media (max-width: 768px) {
-            #testimonial .testimonial-card {
-                flex-direction: column;
-                align-items: center;
-                margin: 0 1rem;
-                width: auto;
-            }
-
-            #testimonial .testimonial-footer {
-                margin-top: 1.5rem;
+            .contact-container {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* ─────────── Contact Section ─────────── */
-        #contact .contact-grid {
-            width: 100%;
-            max-width: 1200px;
-            margin: 2rem auto 0;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;               /* space between columns */
-  align-items: start;      /* top-align both columns */
-  margin-top: 2rem;        /* same gap as header’s margin-bottom */
-}
-
-        #contact {
-            padding: 4rem 1rem;
-            background: #000;
-
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 1.5rem;
+            line-height: 1.5;
         }
 
-        .contact-details {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+        .info-panel p {
+            font-size: 1.1rem;
+            color: #ddd;
+        }
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.25rem;
-  color: #ccc;
-}
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+            color: #eee;
+        }
 
-.contact-item i {
-  font-size: 1.5rem;
-  color: #888;
-}
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #ccc;
+            width: 1.5rem;
+            text-align: center;
+        }
 
-.contact-item a {
-  color: inherit;
-  text-decoration: none;
-}
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
+        .form-cover {
             background: #111;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 1rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
-        .contact-form h2 {
+        .form-cover h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
             color: #fff;
-            text-align: left;
+        }
+
+        .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .contact-form .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        .contact-form label {
+        .form-group label {
             display: block;
-            margin-bottom: .5rem;
-            color: #fff;
-            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #ddd;
         }
 
-        .contact-form input,
-        .contact-form textarea {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            padding: .75rem 1rem;
-            border: 1px solid #333;
-            border-radius: .75rem;
+            padding: 0.75rem 1rem;
             background: #000;
+            border: 1px solid #333;
+            border-radius: 0.75rem;
             color: #eee;
-            font-family: inherit;
             font-size: 1rem;
         }
 
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
             color: #666;
         }
 
-        .contact-form .error-message {
-            display: block;
-            margin-top: .25rem;
-            color: #f55;
-            font-size: .875rem;
-            visibility: hidden;
-        }
-
-        .contact-form .btn-submit {
+        .btn-submit {
             width: 100%;
             padding: 1rem;
             background: #fff;
             color: #000;
-            font-size: 1rem;
             font-weight: 600;
+            font-size: 1rem;
             border: none;
-            border-radius: 30px;
+            border-radius: 2rem;
             cursor: pointer;
-            transition: opacity .3s;
+            transition: opacity 0.3s;
         }
 
-        .contact-form .btn-submit:hover {
-            opacity: .8;
+        .btn-submit:hover {
+            opacity: 0.8;
         }
-
-        .form-success {
-            margin-top: 1rem;
-            color: #6f6;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        #services,
-        #contact {
-            align-self: stretch;
-            width: 100%;
-            box-sizing: border-box;
-            padding: 0 1rem;
-        }
-
-        #contact {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
-        }
-
-        #contact .contact-form {
-            max-width: none;         
-  width: 100%;            
-  margin: 0;
-        }
-
-        @media (max-width: 768px) {
-  #contact .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;           
-  }
-  #contact .contact-info,
-  #contact .contact-form {
-    width: 100%;
-  }
-}
 
         #form-status {
             margin-top: 1rem;
+            text-align: center;
             font-weight: 500;
+            color: #eee;
         }
 
         #form-status.success {
@@ -565,34 +476,137 @@
             color: #f55;
         }
 
-        .contact-form .required {
-            color: inherit;
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: stretch;
         }
 
-        section#services,
-    section#partner,
-    section#testimonial,
-    section#contact {
-      align-self: stretch;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 2.5rem 1rem;
-    }
+        .founder-img {
+            height: 100%;
+        }
 
-    .site-footer {
-        width: 100%;
+        .founder-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            display: block;
+        }
+
+        .founder-content {
+            position: relative;
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            height: 100%;
+        }
+
+        .founder-content .quote-icon {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+        }
+
+        .founder-content .quote-icon i {
+            font-size: 5rem;
+            line-height: 1;
+            color: rgba(0, 0, 0, 0.1);
+        }
+
+        .founder-inner {
+            position: absolute;
+            top: 80px;
+            bottom: 80px;
+            left: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .founder-inner p {
+            margin: 0 0 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .founder-info {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+        }
+
+        .founder-name {
+            font-weight: bold;
+            font-size: 1rem;
+            color: #000;
+            margin: 0;
+        }
+
+        .founder-role {
+            font-size: 0.875rem;
+            color: #666;
+            margin: 4px 0 0;
+        }
+
+        @media (max-width: 600px) {
+            .founder-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .founder-img {
+                width: 100%;
+                height: auto;
+            }
+
+            .founder-img img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                border-radius: 16px;
+            }
+
+            .founder-content {
+                position: relative;
+                width: 100%;
+                padding: 16px;
+                box-sizing: border-box;
+            }
+
+            .founder-inner,
+            .founder-info,
+            .founder-content .quote-icon {
+                position: static;
+            }
+
+            .founder-inner {
+                overflow-y: visible;
+                margin-bottom: 16px;
+            }
+
+            .founder-content .quote-icon {
+                font-size: 4rem;
+                margin-bottom: 10px;
+            }
+        }
+
+        .site-footer {
+            width: 100%;
             background: #000;
             padding: 20px 0 60px;
-            /* no more border-top here */
+            margin-bottom: 50px;
         }
 
         .site-footer .footer-line {
             border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
             width: 80%;
-            /* ← 80% of the footer (i.e. screen) */
             margin: 0 auto 16px;
-            /* auto-center + bottom spacing */
         }
 
         .site-footer .container {
@@ -608,68 +622,76 @@
             margin: 0;
         }
 
-        @media (max-width: 768px) {
-            .site-footer {
-                margin-bottom: 50px;
-            }
+        #starCanvas {
+            z-index: -2;
         }
 
-        /* ─────────── Bottom Navigation ─────────── */
-.bottom-nav {
-  position: fixed;
-  /* respect safe-area on iOS, fallback to 1rem */
-  bottom: env(safe-area-inset-bottom, 1rem);
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 2rem;
-  z-index: 1000;
-  margin-bottom: 2rem;
-}
-.bottom-nav a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: 1.25rem;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 50%;
-  transition: background 0.3s, color 0.3s;
-}
-.bottom-nav a.active {
-  background: #fff;
-  color: #000;
-}
-/* shrink pill and icons a bit on really small screens */
-@media (max-width: 320px) {
-  .bottom-nav {
-    padding: 0.25rem 0.5rem;
-    gap: 1rem;
-  }
-  .bottom-nav a {
-    width: 2rem;
-    height: 2rem;
-    font-size: 1rem;
-  }
-}
+        section.hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 80%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle at center,
+                    rgba(250, 129, 47, 0.125) 0%,
+                    rgba(243, 198, 35, 0.125) 50%,
+                    transparent 100%);
+            filter: blur(100px);
+            z-index: -1;
+            pointer-events: none;
+        }
 
+        .bottom-nav {
+            position: fixed;
+            bottom: env(safe-area-inset-bottom, 1rem);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            z-index: 1000;
+            margin-bottom: 2rem;
+        }
+
+        .bottom-nav a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: 1.25rem;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50%;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .bottom-nav a.active {
+            background: #fff;
+            color: #000;
+        }
+
+        @media (max-width: 320px) {
+            .bottom-nav {
+                padding: 0.25rem 0.5rem;
+                gap: 1rem;
+            }
+
+            .bottom-nav a {
+                width: 2rem;
+                height: 2rem;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <nav class="bottom-nav">
-        <a href="#services"><i class="fas fa-podcast"></i></a>
-        <a href="#partner"><i class="fas fa-user"></i></a>
-        <a href="#contact"><i class="fas fa-phone"></i></a>
-      </nav>
-      
-
     <section class="hero">
         <canvas id="starCanvas"></canvas>
         <div class="hero-content">
@@ -686,197 +708,193 @@
             </h1>
             <h1 class="line2">software development team?</h1>
             <h1 class="brand">CEYNOVA</h1>
-            <p class="tagline">Your trusted partner in software solutions</p>
+            <p class="tagline">Your trusted partner in software innovation</p>
             <div class="btns">
                 <a href="#contact" class="explore">Contact &rarr;</a>
             </div>
         </div>
     </section>
 
-    <section id="services">
+    <nav class="bottom-nav">
+        <a href="#services"><i class="fas fa-rss"></i></a>
+        <a href="#partner"><i class="fas fa-user"></i></a>
+        <a href="#contact"><i class="fas fa-phone"></i></a>
+    </nav>
+
+    <section class="card-section section" id="services">
         <div class="section-header">
-            <h2 class="section-header-title">Our Services</h2>
-            <p class="section-header-subtitle">
-                Driving innovation through cutting-edge software development
-            </p>
+            <h2 class="section-title">Our Engineering Services</h2>
+            <p class="section-subtitle">We provide top-tier expertise across software, cloud, and data domains.</p>
         </div>
-        <div class="service-cards">
-            <div class="service-card">
-                <img src="alert.png" alt="Cloud Engineering" class="card-image" />
-                <h3>Software Engineering</h3>
-                <p>We specialize in recruiting and managing top-tier software engineers with the right mix of technical
-                    skills and problem-solving abilities.</p>
+        <div class="cards">
+            <div class="card">
+                <div class="card-image"><img src="mobile-dev.png" alt="Software Engineering"></div>
+                <h3 class="card-title">Software Engineering</h3>
+                <hr>
+                <p class="card-desc">We specialize in recruiting and managing top-tier software engineers with the right
+                    mix of technical skills and problem-solving abilities.</p>
             </div>
-
-            <div class="service-card">
-                <img src="alert.png" alt="Cloud Engineering" class="card-image" />
-                <h3>Cloud Engineering</h3>
-                <p>Cloud chaos, no more. We’ll help you find the right specialists to build, configure and deploy your
-                    architecture at scale.</p>
+            <div class="card">
+                <div class="card-image"><img src="mobile-dev.png" alt="Cloud Engineering"></div>
+                <h3 class="card-title">Cloud Engineering</h3>
+                <hr>
+                <p class="card-desc">Cloud chaos, no more. We’ll help you find the right specialists to build, configure
+                    and deploy your architecture at scale.</p>
             </div>
-
-            <div class="service-card">
-                <img src="alert.png" alt="Cloud Engineering" class="card-image" />
-                <h3>Data Engineering</h3>
-                <p>Get the most out of your data. We build reliable pipelines and warehouses that become the backbone of
-                    your analytics.</p>
+            <div class="card">
+                <div class="card-image"><img src="mobile-dev.png" alt="Data Engineering"></div>
+                <h3 class="card-title">Data Engineering</h3>
+                <hr>
+                <p class="card-desc">Get the most out of your data. We build reliable pipelines and warehouses that
+                    become the backbone of your analytics.</p>
             </div>
-
-            <div class="service-card">
-                <img src="alert.png" alt="Cloud Engineering" class="card-image" />
-                <h3>AI Engineering</h3>
-                <p>Empower your business with AI: from proof-of-concepts to production, we bring machine learning to
-                    your workflows.</p>
+            <div class="card">
+                <div class="card-image"><img src="mobile-dev.png" alt="Security Engineering"></div>
+                <h3 class="card-title">Security Engineering</h3>
+                <hr>
+                <p class="card-desc">Protect your assets with proactive security audits, threat modeling, and 24/7
+                    monitoring from our expert team.</p>
             </div>
-
-            <div class="service-card">
-                <img src="alert.png" alt="Cloud Engineering" class="card-image" />
-                <h3>AI Engineering</h3>
-                <p>Empower your business with AI: from proof-of-concepts to production, we bring machine learning to
-                    your workflows.</p>
+            <div class="card">
+                <div class="card-image"><img src="mobile-dev.png" alt="ML Engineering"></div>
+                <h3 class="card-title">ML Engineering</h3>
+                <hr>
+                <p class="card-desc">From proof-of-concept to production, we help you ship machine learning models that
+                    scale reliably and ethically.</p>
             </div>
-        </div>
-
-        <div class="carousel-indicators">
-            <span class="indicator active"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
         </div>
     </section>
 
-    <section id="partner">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-header-title">Why Partner with Us</h2>
-                <p class="section-header-subtitle">
-                    We combine expertise, passion, and a track record of success to turn your ideas into impact.
+    <section class="features-section section" id="partner">
+        <div class="section-header">
+            <h2 class="section-title">Why Choose Us</h2>
+            <p class="section-subtitle">Built by experts, backed by results.</p>
+        </div>
+        <div class="feature-item">
+            <div class="feature-number">01</div>
+            <div class="feature-content">
+                <h4 class="feature-title"><strong>Founded by Industry Expert</strong>:</h4>
+                <p class="feature-desc">Benefit from the deep technical knowledge and strategic vision of a team led by
+                    recognized experts in the Google ecosystem.</p>
+                <hr>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-number">02</div>
+            <div class="feature-content">
+                <h4 class="feature-title"><strong>Backed by Talented Developers Globally</strong>:</h4>
+                <p class="feature-desc">Our distributed team of highly skilled developers from around the world brings
+                    diverse expertise and innovative solutions to your projects.</p>
+                <hr>
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-number">03</div>
+            <div class="feature-content">
+                <h4 class="feature-title"><strong>5+ Years of Proven Experience</strong>:</h4>
+                <p class="feature-desc">Rely on our established track record of over five years in the industry,
+                    delivering successful and impactful software solutions for a variety of clients.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="founder-section section">
+        <div class="section-header">
+            <h2 class="section-title">A note from founder..</h2>
+            <p class="section-subtitle">At CeyNova, we are driven by a singular vision</p>
+        </div>
+        <div class="founder-grid">
+            <div class="founder-img">
+                <img src="dilum-image.png" alt="Founder">
+            </div>
+            <div class="founder-content">
+                <div class="quote-icon">
+                    <i class="fa-solid fa-quote-left"></i>
+                </div>
+                <div class="founder-inner">
+                    <p>
+                        At CeyNova, we’re driven by a passion for transforming ideas into impactful software solutions.
+                        Our commitment to innovation, quality, and client success is at the heart of everything we do.
+                    </p>
+                    <p>
+                        At CeyNova, we’re driven by a passion for transforming ideas into impactful software solutions.
+                        Our commitment to innovation, quality, and client success is at the heart of everything we do.
+                    </p>
+                    <p>
+                        At CeyNova, we’re driven by a passion for transforming ideas into impactful software solutions.
+                        Our commitment to innovation, quality, and client success is at the heart of everything we do.
+                    </p>
+                    <p>
+                        At CeyNova, we’re driven by a passion for transforming ideas into impactful software solutions.
+                        Our commitment to innovation, quality, and client success is at the heart of everything we do.
+                    </p>
+                </div>
+                <div class="founder-info">
+                    <div class="founder-name">Dilum De Silva</div>
+                    <div class="founder-role">Founder of Ceynova</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section section" id="contact">
+        <div class="section-header">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">We’d love to hear from you</p>
+        </div>
+        <div class="contact-container">
+            <div class="info-panel">
+                <p>
+                    Have specific questions or unique requirements? Our business specialists are here to provide
+                    detailed
+                    answers and help you explore the possibilities.
                 </p>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:ceynovait@gmail.com">ceynovait@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+642108335719">+64 21 083 35719</a>
+                </div>
             </div>
 
-            <div class="partner-cards">
-                <div class="partner-card">
-                    <h3>Founded by Industry Expert</h3>
-                    <p>
-                        Benefit from the deep technical knowledge and strategic vision of a team led by recognized
-                        experts in the Google ecosystem.
-                    </p>
-                </div>
-                <div class="partner-card">
-                    <h3>Backed by Talented Developers Globally</h3>
-                    <p>
-                        Our distributed team of highly skilled developers from around the world brings diverse expertise
-                        and innovative solutions to your projects.
-                    </p>
-                </div>
-                <div class="partner-card">
-                    <h3>5+ Years of Proven Experience</h3>
-                    <p>
-                        Rely on our established track record of over five years in the industry, delivering successful
-                        and impactful software solutions for a variety of clients.
-                    </p>
-                </div>
-                <div class="partner-card">
-                    <h3>Customer-Focused Approach</h3>
-                    <p>
-                        We put your needs at the heart of every project, delivering tailored solutions, proactive
-                        communication, and dedicated support to ensure your satisfaction and success.
-                    </p>
-                </div>
+            <div class="form-cover">
+                <form id="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company / Organization</label>
+                        <input id="company" name="company" type="text" placeholder="Company (optional)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell us more..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Send Message</button>
+                    <div id="form-status" aria-live="polite"></div>
+                </form>
             </div>
         </div>
     </section>
 
-    <section id="testimonial">
-        <div class="container">
-            <div class="testimonial-card">
-                <blockquote>
-                    “At CeyNova, we’re driven by a passion for transforming ideas into impactful software solutions. Our
-                    commitment to innovation, quality, and client success is at the heart of everything we do.”
-                </blockquote>
-
-                <div class="testimonial-footer">
-                    <img src="dilum.png" alt="Dilum De Silva" class="testimonial-avatar">
-                    <div class="testimonial-name">Dilum De Silva</div>
-                    <div class="testimonial-role">Founder of CeyNova</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="contact">
-        <div class="container">
-          <div class="contact-grid">
-            <!-- Column 1: section header -->
-            <div class="contact-info">
-              <div class="section-header">
-                <h2 class="section-header-title">Let's Connect</h2>
-                <p class="section-header-subtitle">
-                  Have a project in mind? We’d love to hear from you.
-                </p>
-              </div>
-
-              <div class="contact-details">
-                <div class="contact-item">
-                  <i class="fa-solid fa-envelope"></i>
-                  <a href="mailto:ceynovait@gmail.com">ceynovait@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                  <i class="fa-solid fa-phone"></i>
-                  <a href="tel:+642108335719">+64 21 083 35719</a>
-                </div>
-              </div>
-              
-              
-  
-            </div>
-      
-            <!-- Column 2: form -->
-            <div class="contact-form">
-              <form id="contact-form" novalidate>
-                <h2>Get in touch</h2>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="John Doe" required>
-                    <small class="error-message"></small>
-                </div>
-
-                <div class="form-group">
-                    <label for="company">Company / Organization</label>
-                    <input type="text" id="company" name="company" placeholder="Company (optional)">
-                    <small class="error-message"></small>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
-                    <small class="error-message"></small>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
-                    <small class="error-message"></small>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="6" placeholder="Tell us more..."
-                        required></textarea>
-                    <small class="error-message"></small>
-                </div>
-                <button type="submit" class="btn-submit">Send Message</button>
-              </form>
-              <div id="form-status" aria-live="polite"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <footer class="site-footer">
-        <!-- full-width <footer>, but this <hr> will be 80% wide -->
+    <footer class="site-footer">
         <hr class="footer-line" />
         <div class="container">
             <p>Copyright © 2025 • Ceynova</p>
@@ -884,26 +902,6 @@
     </footer>
 
     <script>
-        const container = document.querySelector('.service-cards');
-        const cards = Array.from(document.querySelectorAll('.service-card'));
-        const dots = Array.from(document.querySelectorAll('.indicator'));
-
-        // on scroll, update active dot
-        container.addEventListener('scroll', () => {
-            const idx = Math.round(container.scrollLeft / (cards[0].offsetWidth + 16));
-            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-        });
-
-        // on click dot, scroll to card
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                container.scrollTo({
-                    left: cards[i].offsetLeft - 16,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
         (function () {
             const canvas = document.getElementById('starCanvas');
             const ctx = canvas.getContext('2d');
@@ -936,17 +934,13 @@
                 ctx.fillRect(0, 0, W, H);
 
                 stars.forEach(star => {
-                    // twinkle
                     star.alpha += star.alphaSpeed;
                     if (star.alpha <= 0.2 || star.alpha >= 1) star.alphaSpeed *= -1;
-                    // drift
                     star.x += star.vx; star.y += star.vy;
-                    // wrap
                     if (star.x < 0) star.x = W;
                     if (star.x > W) star.x = 0;
                     if (star.y < 0) star.y = H;
                     if (star.y > H) star.y = 0;
-                    // draw
                     ctx.globalAlpha = star.alpha;
                     ctx.beginPath();
                     ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
@@ -963,48 +957,42 @@
             animate();
         })();
 
-        document
-            .getElementById('contact-form')
-            .addEventListener('submit', async function (e) {
-                e.preventDefault();
-                const form = e.target;
-                const statusDiv = document.getElementById('form-status');
+        const form = document.getElementById('contact-form');
+        const statusDiv = document.getElementById('form-status');
 
-                // HTML5 validation
-                if (!form.checkValidity()) {
-                    form.reportValidity();
-                    return;
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const data = new FormData(form);
+            try {
+                const res = await fetch('https://formspree.io/f/mvgaqyae', {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    statusDiv.textContent = 'Thanks! We’ll be in touch soon.';
+                    statusDiv.className = 'success';
+                    form.reset();
+                } else {
+                    throw new Error('Submission failed');
                 }
+            } catch (err) {
+                statusDiv.textContent = 'Oops! Something went wrong.';
+                statusDiv.className = 'error';
+                console.error(err);
+            }
 
-                const endpoint = 'https://formspree.io/f/mvgaqyae';
-                const formData = new FormData(form);
-
-                try {
-                    const res = await fetch(endpoint, {
-                        method: 'POST',
-                        body: formData,
-                        headers: { 'Accept': 'application/json' }
-                    });
-                    if (res.ok) {
-                        statusDiv.textContent = "Thanks for reaching out! We’ll be in touch soon.";
-                        statusDiv.className = 'success';
-                        form.reset();
-                    } else {
-                        const data = await res.json();
-                        throw new Error(data.error || 'Submission failed');
-                    }
-                } catch (err) {
-                    statusDiv.textContent = "Oops! There was a problem sending your message.";
-                    statusDiv.className = 'error';
-                    console.error(err);
-                }
-
-                // clear the message after 10 seconds
-                setTimeout(() => {
-                    statusDiv.textContent = '';
-                    statusDiv.className = '';
-                }, 10000);
-            });
+            setTimeout(() => {
+                statusDiv.textContent = '';
+                statusDiv.className = '';
+            }, 10000);
+        });
     </script>
 </body>
 
