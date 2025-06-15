@@ -907,6 +907,79 @@
       </div>
     </section>
 
+    <section class="faq-section section">
+      <div class="section-header">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">
+          Explore answers to common questions and learn how we can help bring your ideas to life with smart, reliable solutions.
+        </p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What types of software solutions do you provide? <span class="toggle-icon">-</span></button>
+        <div class="faq-answer">
+          We provide end-to-end solutions including mobile and web app development, desktop applications, cloud and infrastructure engineering, and AI &amp; data integrations. Each solution is tailored to your business needs and goals.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Do you offer cloud migration and infrastructure setup? <span class="toggle-icon">-</span></button>
+        <div class="faq-answer">
+          Yes, our team provides full cloud migration, architecture design, deployment automation, and optimization on platforms like AWS, Azure, and Google Cloud.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How does Ceynova integrate AI into software solutions? <span class="toggle-icon">-</span></button>
+        <div class="faq-answer">
+          We integrate AI through machine learning models, NLP, computer vision, and analytics pipelines, ensuring these are seamlessly embedded into your software to enhance automation, insights, and user experience.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can you build cross-platform mobile and web apps? <span class="toggle-icon">-</span></button>
+        <div class="faq-answer">
+          Absolutely! We build secure, scalable cross-platform apps that deliver consistent, high-quality experiences across iOS, Android, and web platforms.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Do you provide ongoing support and maintenance? <span class="toggle-icon">-</span></button>
+        <div class="faq-answer">
+          Yes, we provide long-term support, including updates, security monitoring, backups, and technical assistance to keep your solutions reliable and secure.
+        </div>
+      </div>
+    </section>
+    <style>
+      .faq-item {
+        margin-bottom: 1rem;
+      }
+      .faq-question {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.25rem;
+        padding: 0.75rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .faq-answer {
+        padding: 0.75rem;
+        color: #ccc;
+        display: none;
+      }
+      .faq-item.active .faq-answer {
+        display: block;
+      }
+    </style>
+    <script>
+      document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          item.classList.toggle('active');
+        });
+      });
+    </script>
+
     <section class="contact-section section" id="contact">
       <div class="section-header">
         <h2 class="section-title">Let's Connect</h2>
