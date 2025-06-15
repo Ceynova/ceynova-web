@@ -1,1000 +1,1086 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ceynova</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-…your-integrity-hash…" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-…your-integrity-hash…"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #000;
+        color: #fff;
+      }
+
+      section.hero {
+        width: 100%;
+        max-width: 100vw;
+        height: 100vh;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      #starCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .line1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: clamp(1.5rem, 5vw, 3rem);
+        line-height: 1.2;
+        color: #fff;
+      }
+
+      .line1 .static {
+        margin-right: 0.5ch;
+        white-space: nowrap;
+      }
+
+      .word-rotator {
+        height: 1.2em;
+        overflow: hidden;
+      }
+
+      .word-rotator ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        animation: slide 8s infinite;
+      }
+
+      .word-rotator li {
+        height: 1.2em;
+        line-height: 1.2em;
+        text-align: left;
+        white-space: nowrap;
+        background: linear-gradient(90deg, #fa812f, #f3c623);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @keyframes slide {
+        0%,
+        12.5% {
+          transform: translateY(0);
         }
 
-        html {
-            scroll-behavior: smooth;
+        25%,
+        37.5% {
+          transform: translateY(-1.2em);
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #000;
-            color: #fff;
+        50%,
+        62.5% {
+          transform: translateY(-2.4em);
         }
 
-        section.hero {
-            width: 100%;
-            max-width: 100vw;
-            height: 100vh;
-            padding: 0;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
+        75%,
+        87.5% {
+          transform: translateY(-3.6em);
         }
 
-        #starCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+        100% {
+          transform: translateY(0);
         }
+      }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
+      .line2 {
+        margin-top: 0.5rem;
+        font-size: clamp(1.5rem, 5vw, 3rem);
+        line-height: 1.2;
+        color: #fff;
+        white-space: normal;
+        overflow-wrap: break-word;
+      }
 
-        .line1 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            font-size: clamp(1rem, 5vw, 2.5rem);
-            line-height: 1.2;
-            color: #fff;
-        }
+      .brand {
+        font-family: "Share Tech", monospace;
+        font-size: clamp(3rem, 10vw, 9rem);
+        background: linear-gradient(90deg, #fa812f, #f3c623);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0.5rem 0;
+        white-space: nowrap;
+      }
 
-        .line1 .static {
-            margin-right: 0.5ch;
-            white-space: nowrap;
-        }
-
-        .word-rotator {
-            height: 1.2em;
-            overflow: hidden;
-        }
-
-        .word-rotator ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            animation: slide 8s infinite;
-        }
-
-        .word-rotator li {
-            height: 1.2em;
-            line-height: 1.2em;
-            text-align: left;
-            white-space: nowrap;
-            background: linear-gradient(90deg, #FA812F, #F3C623);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @keyframes slide {
-
-            0%,
-            12.5% {
-                transform: translateY(0);
-            }
-
-            25%,
-            37.5% {
-                transform: translateY(-1.2em);
-            }
-
-            50%,
-            62.5% {
-                transform: translateY(-2.4em);
-            }
-
-            75%,
-            87.5% {
-                transform: translateY(-3.6em);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        .line2 {
-            margin-top: 0.5rem;
-            font-size: clamp(1rem, 5vw, 2.5rem);
-            line-height: 1.2;
-            color: #fff;
-            white-space: normal;
-            overflow-wrap: break-word;
-        }
-
+      @media (max-width: 600px) {
         .brand {
-            font-family: 'Share Tech', monospace;
-            font-size: clamp(3rem, 10vw, 9rem);
-            background: linear-gradient(90deg, #FA812F, #F3C623);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0.5rem 0;
-            white-space: nowrap;
+          font-size: clamp(4rem, 12vw, 9rem);
         }
+      }
 
-        @media (max-width: 600px) {
-            .brand {
-                font-size: clamp(4rem, 12vw, 9rem);
-            }
-        }
+      .tagline {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        color: #a9b0bd;
+        word-wrap: break-word;
+        text-align: center;
+      }
 
-        .tagline {
-            font-size: clamp(1rem, 4vw, 1.25rem);
-            color: #a9b0bd;
-            word-wrap: break-word;
-            text-align: center;
-        }
+      section.hero .btns a {
+        display: inline-block;
+        margin: 2rem 0;
+        padding: 12px 24px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background 0.3s, opacity 0.3s;
+      }
 
-        section.hero .btns a {
-            display: inline-block;
-            margin: 2rem 0;
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.3s, opacity 0.3s;
-        }
+      section.hero .btns .explore {
+        background: #fff;
+        color: #000;
+      }
 
-        section.hero .btns .explore {
-            background: #fff;
-            color: #000;
-        }
+      section.hero .btns a:hover {
+        opacity: 0.8;
+      }
 
-        section.hero .btns a:hover {
-            opacity: 0.8;
-        }
+      .section-header {
+        max-width: 1200px;
+        margin: 0 auto 2rem;
+        padding: 0 1rem;
+        text-align: left;
+      }
 
-        .section-header {
-            max-width: 1200px;
-            margin: 0 auto 2rem;
-            padding: 0 1rem;
-            text-align: left;
-        }
+      .section-header-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+        margin: 0;
+        line-height: 1.1;
+        background: linear-gradient(90deg, #fa812f, #f3c623);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-        .section-header-title {
-            font-size: clamp(2rem, 6vw, 3rem);
-            margin: 0;
-            line-height: 1.1;
-            background: linear-gradient(90deg, #FA812F, #F3C623);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+      .section-header-subtitle {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        margin: 0.5rem 0 0;
+        color: #a9b0bd;
+        line-height: 1.2;
+      }
 
-        .section-header-subtitle {
-            font-size: clamp(1rem, 4vw, 1.25rem);
-            margin: 0.5rem 0 0;
-            color: #a9b0bd;
-            line-height: 1.2;
-        }
+      .section {
+        padding: 60px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
+      @media (max-width: 600px) {
         .section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+          padding: 60px 32px;
         }
+      }
 
-        @media (max-width: 600px) {
-            .section {
-                padding: 60px 32px;
-            }
-        }
+      .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+      .section-title {
+        font-size: 2rem;
+        font-weight: 600;
+        background: linear-gradient(90deg, #fa812f, #f3c623);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 8px;
+      }
 
-        .section-title {
-            font-size: 2rem;
-            font-weight: 600;
-            background: linear-gradient(90deg, #FA812F, #F3C623);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
+      .section-subtitle {
+        font-size: 1rem;
+        color: #ccc;
+      }
 
-        .section-subtitle {
-            font-size: 1rem;
-            color: #ccc;
-        }
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+        width: 100%;
+      }
 
+      .card {
+        width: 300px;
+        height: 380px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-image {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+
+      .card-image img {
+        max-width: 150px;
+        height: auto;
+      }
+
+      .card-title {
+        font-size: 1.25rem;
+        margin-bottom: 8px;
+        text-align: left;
+        color: #fff;
+      }
+
+      .card-desc {
+        font-size: 1rem;
+        line-height: 1.5;
+        text-align: left;
+        flex: 1 1 auto;
+        color: #fff;
+      }
+
+      .card hr {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        margin: 10px 0;
+      }
+
+      @media (max-width: 600px) {
         .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 24px;
-            width: 100%;
+          flex-direction: column;
+          align-items: stretch;
         }
 
         .card {
-            width: 300px;
-            height: 380px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border-radius: 16px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
+          width: 100%;
+          max-width: none;
         }
+      }
 
-        .card-image {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 16px;
-        }
+      .features-section {
+        position: relative;
+      }
 
-        .card-image img {
-            max-width: 150px;
-            height: auto;
-        }
+      .features-section::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        height: 70%;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(
+          circle at center,
+          rgba(250, 129, 47, 0.125) 0%,
+          rgba(243, 198, 35, 0.125) 50%,
+          transparent 100%
+        );
+        filter: blur(100px);
+        z-index: -1;
+        pointer-events: none;
+      }
 
-        .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 8px;
-            text-align: left;
-            color: #fff;
-        }
+      .feature-item {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        column-gap: 20px;
+        align-items: start;
+        margin-bottom: 40px;
+      }
 
-        .card-desc {
-            font-size: 1rem;
-            line-height: 1.5;
-            text-align: left;
-            flex: 1 1 auto;
-            color: #fff;
-        }
+      .feature-number {
+        font-size: 3rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, #fa812f, #f3c623);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+      }
 
-        .card hr {
-            border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            margin: 10px 0;
-        }
+      .feature-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin: 0 0 8px;
+        color: #fff;
+        text-decoration: none;
+      }
 
-        @media (max-width: 600px) {
-            .cards {
-                flex-direction: column;
-                align-items: stretch;
-            }
+      .feature-desc {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+        color: #fff;
+      }
 
-            .card {
-                width: 100%;
-                max-width: none;
-            }
-        }
+      .feature-item hr {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        margin: 20px 0 0;
+        width: 100%;
+      }
 
-        .features-section {
-            position: relative;
-        }
-
-        .features-section::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 70%;
-            height: 70%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle at center,
-                    rgba(250, 129, 47, 0.125) 0%,
-                    rgba(243, 198, 35, 0.125) 50%,
-                    transparent 100%);
-            filter: blur(100px);
-            z-index: -1;
-            pointer-events: none;
-        }
-
+      @media (max-width: 600px) {
         .feature-item {
-            display: grid;
-            grid-template-columns: 60px 1fr;
-            column-gap: 20px;
-            align-items: start;
-            margin-bottom: 40px;
+          grid-template-columns: 1fr;
+          row-gap: 12px;
         }
 
         .feature-number {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, #FA812F, #F3C623);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
+          text-align: left;
         }
+      }
 
-        .feature-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin: 0 0 8px;
-            color: #fff;
-            text-decoration: none;
-        }
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
 
-        .feature-desc {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin: 0;
-            color: #fff;
-        }
-
-        .feature-item hr {
-            border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            margin: 20px 0 0;
-            width: 100%;
-        }
-
-        @media (max-width: 600px) {
-            .feature-item {
-                grid-template-columns: 1fr;
-                row-gap: 12px;
-            }
-
-            .feature-number {
-                text-align: left;
-            }
-        }
-
+      @media (max-width: 768px) {
         .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+          grid-template-columns: 1fr;
         }
+      }
 
-        @media (max-width: 768px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
+      .info-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1.5rem;
+        line-height: 1.5;
+      }
 
-        .info-panel {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: 1.5rem;
-            line-height: 1.5;
-        }
+      .info-panel p {
+        font-size: 1.1rem;
+        color: #ddd;
+      }
 
-        .info-panel p {
-            font-size: 1.1rem;
-            color: #ddd;
-        }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 1.1rem;
+        color: #eee;
+      }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.1rem;
-            color: #eee;
-        }
+      .contact-item i {
+        font-size: 1.5rem;
+        color: #ccc;
+        width: 1.5rem;
+        text-align: center;
+      }
 
-        .contact-item i {
-            font-size: 1.5rem;
-            color: #ccc;
-            width: 1.5rem;
-            text-align: center;
-        }
+      .contact-item a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-        .contact-item a {
-            color: inherit;
-            text-decoration: none;
-        }
+      .form-cover {
+        background: #111;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      }
 
-        .form-cover {
-            background: #111;
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        }
+      .form-cover h2 {
+        margin-bottom: 1.5rem;
+        font-size: 1.75rem;
+        color: #fff;
+      }
 
-        .form-cover h2 {
-            margin-bottom: 1.5rem;
-            font-size: 1.75rem;
-            color: #fff;
-        }
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #ddd;
+      }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #ddd;
-        }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: #000;
+        border: 1px solid #333;
+        border-radius: 0.75rem;
+        color: #eee;
+        font-size: 1rem;
+      }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background: #000;
-            border: 1px solid #333;
-            border-radius: 0.75rem;
-            color: #eee;
-            font-size: 1rem;
-        }
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: #666;
+      }
 
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: #666;
-        }
+      .btn-submit {
+        width: 100%;
+        padding: 1rem;
+        background: #fff;
+        color: #000;
+        font-weight: 600;
+        font-size: 1rem;
+        border: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: opacity 0.3s;
+      }
 
-        .btn-submit {
-            width: 100%;
-            padding: 1rem;
-            background: #fff;
-            color: #000;
-            font-weight: 600;
-            font-size: 1rem;
-            border: none;
-            border-radius: 2rem;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
+      .btn-submit:hover {
+        opacity: 0.8;
+      }
 
-        .btn-submit:hover {
-            opacity: 0.8;
-        }
+      #form-status {
+        margin-top: 1rem;
+        text-align: center;
+        font-weight: 500;
+        color: #eee;
+      }
 
-        #form-status {
-            margin-top: 1rem;
-            text-align: center;
-            font-weight: 500;
-            color: #eee;
-        }
+      #form-status.success {
+        color: #6f6;
+      }
 
-        #form-status.success {
-            color: #6f6;
-        }
+      #form-status.error {
+        color: #f55;
+      }
 
-        #form-status.error {
-            color: #f55;
-        }
+      .founder-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        align-items: stretch;
+      }
 
+      .founder-img {
+        height: 100%;
+      }
+
+      .founder-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+        display: block;
+      }
+
+      .founder-content {
+        position: relative;
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        height: 100%;
+      }
+
+      .founder-content .quote-icon {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+      }
+
+      .founder-content .quote-icon i {
+        font-size: 5rem;
+        line-height: 1;
+        color: rgba(0, 0, 0, 0.1);
+      }
+
+      .founder-inner {
+        position: absolute;
+        top: 80px;
+        bottom: 80px;
+        left: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow-y: auto;
+      }
+
+      .founder-inner p {
+        margin: 0 0 16px;
+        line-height: 1.6;
+        color: #555;
+      }
+
+      .founder-info {
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+      }
+
+      .founder-name {
+        font-weight: bold;
+        font-size: 1rem;
+        color: #000;
+        margin: 0;
+      }
+
+      .founder-role {
+        font-size: 0.875rem;
+        color: #666;
+        margin: 4px 0 0;
+      }
+
+      @media (max-width: 600px) {
         .founder-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            align-items: stretch;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
         }
 
         .founder-img {
-            height: 100%;
+          width: 100%;
+          height: auto;
         }
 
         .founder-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 16px;
-            display: block;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          border-radius: 16px;
         }
 
         .founder-content {
-            position: relative;
-            background: #fff;
-            border-radius: 16px;
-            padding: 24px;
-            height: 100%;
+          position: relative;
+          width: 100%;
+          padding: 16px;
+          box-sizing: border-box;
         }
 
+        .founder-inner,
+        .founder-info,
         .founder-content .quote-icon {
-            position: absolute;
-            top: 24px;
-            left: 24px;
-        }
-
-        .founder-content .quote-icon i {
-            font-size: 5rem;
-            line-height: 1;
-            color: rgba(0, 0, 0, 0.1);
+          position: static;
         }
 
         .founder-inner {
-            position: absolute;
-            top: 80px;
-            bottom: 80px;
-            left: 24px;
-            right: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            overflow-y: auto;
+          overflow-y: visible;
+          margin-bottom: 16px;
         }
 
-        .founder-inner p {
-            margin: 0 0 16px;
-            line-height: 1.6;
-            color: #555;
+        .founder-content .quote-icon {
+          font-size: 4rem;
+          margin-bottom: 10px;
         }
+      }
 
-        .founder-info {
-            position: absolute;
-            bottom: 24px;
-            left: 24px;
-        }
+      .site-footer {
+        width: 100%;
+        background: #000;
+        padding: 20px 0 60px;
+        margin-bottom: 50px;
+      }
 
-        .founder-name {
-            font-weight: bold;
-            font-size: 1rem;
-            color: #000;
-            margin: 0;
-        }
+      .site-footer .footer-line {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        width: 80%;
+        margin: 0 auto 16px;
+      }
 
-        .founder-role {
-            font-size: 0.875rem;
-            color: #666;
-            margin: 4px 0 0;
-        }
+      .site-footer .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-        @media (max-width: 600px) {
-            .founder-grid {
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-            }
+      .site-footer p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        text-align: center;
+        margin: 0;
+      }
 
-            .founder-img {
-                width: 100%;
-                height: auto;
-            }
+      #starCanvas {
+        z-index: -2;
+      }
 
-            .founder-img img {
-                width: 100%;
-                height: auto;
-                object-fit: contain;
-                border-radius: 16px;
-            }
+      section.hero::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        height: 80%;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(
+          circle at center,
+          rgba(250, 129, 47, 0.125) 0%,
+          rgba(243, 198, 35, 0.125) 50%,
+          transparent 100%
+        );
+        filter: blur(100px);
+        z-index: -1;
+        pointer-events: none;
+      }
 
-            .founder-content {
-                position: relative;
-                width: 100%;
-                padding: 16px;
-                box-sizing: border-box;
-            }
+      .bottom-nav {
+        position: fixed;
+        bottom: env(safe-area-inset-bottom, 1rem);
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 1.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 2rem;
+        z-index: 1000;
+        margin-bottom: 2rem;
+      }
 
-            .founder-inner,
-            .founder-info,
-            .founder-content .quote-icon {
-                position: static;
-            }
+      .bottom-nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50%;
+        transition: background 0.3s, color 0.3s;
+      }
 
-            .founder-inner {
-                overflow-y: visible;
-                margin-bottom: 16px;
-            }
+      .bottom-nav a.active {
+        background: #fff;
+        color: #000;
+      }
 
-            .founder-content .quote-icon {
-                font-size: 4rem;
-                margin-bottom: 10px;
-            }
-        }
-
-        .site-footer {
-            width: 100%;
-            background: #000;
-            padding: 20px 0 60px;
-            margin-bottom: 50px;
-        }
-
-        .site-footer .footer-line {
-            border: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            width: 80%;
-            margin: 0 auto 16px;
-        }
-
-        .site-footer .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .site-footer p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-            text-align: center;
-            margin: 0;
-        }
-
-        #starCanvas {
-            z-index: -2;
-        }
-
-        section.hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 80%;
-            height: 80%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle at center,
-                    rgba(250, 129, 47, 0.125) 0%,
-                    rgba(243, 198, 35, 0.125) 50%,
-                    transparent 100%);
-            filter: blur(100px);
-            z-index: -1;
-            pointer-events: none;
-        }
-
+      @media (max-width: 320px) {
         .bottom-nav {
-            position: fixed;
-            bottom: env(safe-area-inset-bottom, 1rem);
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 1.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 2rem;
-            z-index: 1000;
-            margin-bottom: 2rem;
+          padding: 0.25rem 0.5rem;
+          gap: 1rem;
         }
 
         .bottom-nav a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.5rem;
-            height: 2.5rem;
-            font-size: 1.25rem;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50%;
-            transition: background 0.3s, color 0.3s;
+          width: 2rem;
+          height: 2rem;
+          font-size: 1rem;
         }
-
-        .bottom-nav a.active {
-            background: #fff;
-            color: #000;
-        }
-
-        @media (max-width: 320px) {
-            .bottom-nav {
-                padding: 0.25rem 0.5rem;
-                gap: 1rem;
-            }
-
-            .bottom-nav a {
-                width: 2rem;
-                height: 2rem;
-                font-size: 1rem;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <section class="hero">
-        <canvas id="starCanvas"></canvas>
-        <div class="hero-content">
-            <h1 class="line1">
-                <span class="static">Looking for</span>
-                <span class="word-rotator">
-                    <ul>
-                        <li>sustainable,</li>
-                        <li>reliable,</li>
-                        <li>scalable,</li>
-                        <li>innovative</li>
-                    </ul>
-                </span>
-            </h1>
-            <h1 class="line2">software development team?</h1>
-            <h1 class="brand">CEYNOVA</h1>
-            <p class="tagline">Your trusted partner in software innovation</p>
-            <div class="btns">
-                <a href="#contact" class="explore">Contact &rarr;</a>
-            </div>
+      <canvas id="starCanvas"></canvas>
+      <div class="hero-content">
+        <h1 class="line1">
+          <span class="static">Looking for</span>
+          <span class="word-rotator">
+            <ul>
+              <li>Reliable</li>
+              <li>Scalable</li>
+              <li>Innovative</li>
+              <li>Secure</li>
+            </ul>
+          </span>
+        </h1>
+        <h1 class="line2">Tailored Software Solutions Built Around Your Needs?</h1>
+        <h1 class="brand">CEYNOVA</h1>
+        <p class="tagline">Your trusted partner in software innovation</p>
+        <div class="btns">
+          <a href="#contact" class="explore">Contact &rarr;</a>
         </div>
+      </div>
     </section>
 
     <nav class="bottom-nav">
-        <a href="#services"><i class="fas fa-rss"></i></a>
-        <a href="#partner"><i class="fas fa-user"></i></a>
-        <a href="#contact"><i class="fas fa-phone"></i></a>
+      <a href="#services"><i class="fas fa-rss"></i></a>
+      <a href="#partner"><i class="fas fa-user"></i></a>
+      <a href="#contact"><i class="fas fa-phone"></i></a>
     </nav>
 
     <section class="card-section section" id="services">
-        <div class="section-header">
-            <h2 class="section-title">Our Engineering Services</h2>
-            <p class="section-subtitle">We provide top-tier expertise across software, cloud, and data domains.</p>
+      <div class="section-header">
+        <h2 class="section-title">Our Engineering Services</h2>
+        <p class="section-subtitle">
+          We provide top-tier expertise across software, cloud, and data
+          domains.
+        </p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="card-image">
+            <img src="mobile-dev.png" alt="Software Engineering" />
+          </div>
+          <h3 class="card-title">Software Engineering</h3>
+          <hr />
+          <p class="card-desc">
+            We specialize in recruiting and managing top-tier software engineers
+            with the right mix of technical skills and problem-solving
+            abilities.
+          </p>
         </div>
-        <div class="cards">
-            <div class="card">
-                <div class="card-image"><img src="mobile-dev.png" alt="Software Engineering"></div>
-                <h3 class="card-title">Software Engineering</h3>
-                <hr>
-                <p class="card-desc">We specialize in recruiting and managing top-tier software engineers with the right
-                    mix of technical skills and problem-solving abilities.</p>
-            </div>
-            <div class="card">
-                <div class="card-image"><img src="mobile-dev.png" alt="Cloud Engineering"></div>
-                <h3 class="card-title">Cloud Engineering</h3>
-                <hr>
-                <p class="card-desc">Cloud chaos, no more. We’ll help you find the right specialists to build, configure
-                    and deploy your architecture at scale.</p>
-            </div>
-            <div class="card">
-                <div class="card-image"><img src="mobile-dev.png" alt="Data Engineering"></div>
-                <h3 class="card-title">Data Engineering</h3>
-                <hr>
-                <p class="card-desc">Get the most out of your data. We build reliable pipelines and warehouses that
-                    become the backbone of your analytics.</p>
-            </div>
-            <div class="card">
-                <div class="card-image"><img src="mobile-dev.png" alt="Security Engineering"></div>
-                <h3 class="card-title">Security Engineering</h3>
-                <hr>
-                <p class="card-desc">Protect your assets with proactive security audits, threat modeling, and 24/7
-                    monitoring from our expert team.</p>
-            </div>
-            <div class="card">
-                <div class="card-image"><img src="mobile-dev.png" alt="ML Engineering"></div>
-                <h3 class="card-title">ML Engineering</h3>
-                <hr>
-                <p class="card-desc">From proof-of-concept to production, we help you ship machine learning models that
-                    scale reliably and ethically.</p>
-            </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="mobile-dev.png" alt="Cloud Engineering" />
+          </div>
+          <h3 class="card-title">Cloud Engineering</h3>
+          <hr />
+          <p class="card-desc">
+            Cloud chaos, no more. We’ll help you find the right specialists to
+            build, configure and deploy your architecture at scale.
+          </p>
         </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="mobile-dev.png" alt="Data Engineering" />
+          </div>
+          <h3 class="card-title">Data Engineering</h3>
+          <hr />
+          <p class="card-desc">
+            Get the most out of your data. We build reliable pipelines and
+            warehouses that become the backbone of your analytics.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="mobile-dev.png" alt="Security Engineering" />
+          </div>
+          <h3 class="card-title">Security Engineering</h3>
+          <hr />
+          <p class="card-desc">
+            Protect your assets with proactive security audits, threat modeling,
+            and 24/7 monitoring from our expert team.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="mobile-dev.png" alt="ML Engineering" />
+          </div>
+          <h3 class="card-title">ML Engineering</h3>
+          <hr />
+          <p class="card-desc">
+            From proof-of-concept to production, we help you ship machine
+            learning models that scale reliably and ethically.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section class="features-section section" id="partner">
-        <div class="section-header">
-            <h2 class="section-title">Why Choose Us</h2>
-            <p class="section-subtitle">Built by experts, backed by results.</p>
+      <div class="section-header">
+        <h2 class="section-title">Why Choose Us</h2>
+        <p class="section-subtitle">Built by experts, backed by results.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-number">01</div>
+        <div class="feature-content">
+          <h4 class="feature-title">
+            <strong>Founded by Industry Expert</strong>:
+          </h4>
+          <p class="feature-desc">
+            Benefit from the deep technical knowledge and strategic vision of a
+            team led by recognized experts in the Google ecosystem.
+          </p>
+          <hr />
         </div>
-        <div class="feature-item">
-            <div class="feature-number">01</div>
-            <div class="feature-content">
-                <h4 class="feature-title"><strong>Founded by Industry Expert</strong>:</h4>
-                <p class="feature-desc">Benefit from the deep technical knowledge and strategic vision of a team led by
-                    recognized experts in the Google ecosystem.</p>
-                <hr>
-            </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-number">02</div>
+        <div class="feature-content">
+          <h4 class="feature-title">
+            <strong>Backed by Talented Developers Globally</strong>:
+          </h4>
+          <p class="feature-desc">
+            Our distributed team of highly skilled developers from around the
+            world brings diverse expertise and innovative solutions to your
+            projects.
+          </p>
+          <hr />
         </div>
-        <div class="feature-item">
-            <div class="feature-number">02</div>
-            <div class="feature-content">
-                <h4 class="feature-title"><strong>Backed by Talented Developers Globally</strong>:</h4>
-                <p class="feature-desc">Our distributed team of highly skilled developers from around the world brings
-                    diverse expertise and innovative solutions to your projects.</p>
-                <hr>
-            </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-number">03</div>
+        <div class="feature-content">
+          <h4 class="feature-title">
+            <strong>5+ Years of Proven Experience</strong>:
+          </h4>
+          <p class="feature-desc">
+            Rely on our established track record of over five years in the
+            industry, delivering successful and impactful software solutions for
+            a variety of clients.
+          </p>
         </div>
-        <div class="feature-item">
-            <div class="feature-number">03</div>
-            <div class="feature-content">
-                <h4 class="feature-title"><strong>5+ Years of Proven Experience</strong>:</h4>
-                <p class="feature-desc">Rely on our established track record of over five years in the industry,
-                    delivering successful and impactful software solutions for a variety of clients.</p>
-            </div>
-        </div>
+      </div>
     </section>
 
     <section class="founder-section section">
-        <div class="section-header">
-            <h2 class="section-title">A note from founder..</h2>
-            <p class="section-subtitle">At CeyNova, we are driven by a singular vision</p>
+      <div class="section-header">
+        <h2 class="section-title">A note from founder..</h2>
+        <p class="section-subtitle">
+          At CeyNova, we are driven by a singular vision
+        </p>
+      </div>
+      <div class="founder-grid">
+        <div class="founder-img">
+          <img src="dilum-image.JPG" alt="Founder" />
         </div>
-        <div class="founder-grid">
-            <div class="founder-img">
-                <img src="dilum-image.png" alt="Founder">
-            </div>
-            <div class="founder-content">
-                <div class="quote-icon">
-                    <i class="fa-solid fa-quote-left"></i>
-                </div>
-                <div class="founder-inner">
-                    <p>
-                        At CeyNova, we’re driven by a passion for transforming ideas into impactful software solutions.
-                        Our commitment to innovation, quality, and client success is at the heart of everything we do.
-                    </p>
-                    <p>
-                        At CeyNova, we’re driven by a passion for transforming ideas into impactful software solutions.
-                        Our commitment to innovation, quality, and client success is at the heart of everything we do.
-                    </p>
-                    <p>
-                        At CeyNova, we’re driven by a passion for transforming ideas into impactful software solutions.
-                        Our commitment to innovation, quality, and client success is at the heart of everything we do.
-                    </p>
-                    <p>
-                        At CeyNova, we’re driven by a passion for transforming ideas into impactful software solutions.
-                        Our commitment to innovation, quality, and client success is at the heart of everything we do.
-                    </p>
-                </div>
-                <div class="founder-info">
-                    <div class="founder-name">Dilum De Silva</div>
-                    <div class="founder-role">Founder of Ceynova</div>
-                </div>
-            </div>
+        <div class="founder-content">
+          <div class="quote-icon">
+            <i class="fa-solid fa-quote-left"></i>
+          </div>
+          <div class="founder-inner">
+            <p>
+              At CeyNova, we’re driven by a passion for transforming ideas into
+              impactful software solutions. Our commitment to innovation,
+              quality, and client success is at the heart of everything we do.
+            </p>
+            <p>
+              At CeyNova, we’re driven by a passion for transforming ideas into
+              impactful software solutions. Our commitment to innovation,
+              quality, and client success is at the heart of everything we do.
+            </p>
+            <p>
+              At CeyNova, we’re driven by a passion for transforming ideas into
+              impactful software solutions. Our commitment to innovation,
+              quality, and client success is at the heart of everything we do.
+            </p>
+            <p>
+              At CeyNova, we’re driven by a passion for transforming ideas into
+              impactful software solutions. Our commitment to innovation,
+              quality, and client success is at the heart of everything we do.
+            </p>
+          </div>
+          <div class="founder-info">
+            <div class="founder-name">Dilum De Silva</div>
+            <div class="founder-role">Founder of Ceynova</div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section class="contact-section section" id="contact">
-        <div class="section-header">
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="section-subtitle">We’d love to hear from you</p>
+      <div class="section-header">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">We’d love to hear from you</p>
+      </div>
+      <div class="contact-container">
+        <div class="info-panel">
+          <p>
+            Have specific questions or unique requirements? Our business
+            specialists are here to provide detailed answers and help you
+            explore the possibilities.
+          </p>
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:ceynovait@gmail.com">ceynovait@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:+642108335719">+64 21 083 35719</a>
+          </div>
         </div>
-        <div class="contact-container">
-            <div class="info-panel">
-                <p>
-                    Have specific questions or unique requirements? Our business specialists are here to provide
-                    detailed
-                    answers and help you explore the possibilities.
-                </p>
-                <div class="contact-item">
-                    <i class="fa-solid fa-envelope"></i>
-                    <a href="mailto:ceynovait@gmail.com">ceynovait@gmail.com</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fa-solid fa-phone"></i>
-                    <a href="tel:+642108335719">+64 21 083 35719</a>
-                </div>
+
+        <div class="form-cover">
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="John Doe"
+                required
+              />
             </div>
 
-            <div class="form-cover">
-                <form id="contact-form" novalidate>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input id="name" name="name" type="text" placeholder="John Doe" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="company">Company / Organization</label>
-                        <input id="company" name="company" type="text" placeholder="Company (optional)">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="email" name="email" type="email" placeholder="you@example.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input id="phone" name="phone" type="tel" placeholder="+1 (555) 123-4567">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell us more..."
-                            required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Send Message</button>
-                    <div id="form-status" aria-live="polite"></div>
-                </form>
+            <div class="form-group">
+              <label for="company">Company / Organization</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                placeholder="Company (optional)"
+              />
             </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="+1 (555) 123-4567"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell us more..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Send Message</button>
+            <div id="form-status" aria-live="polite"></div>
+          </form>
         </div>
+      </div>
     </section>
 
     <footer class="site-footer">
-        <hr class="footer-line" />
-        <div class="container">
-            <p>Copyright © 2025 • Ceynova</p>
-        </div>
+      <hr class="footer-line" />
+      <div class="container">
+        <p>Copyright © 2025 • Ceynova</p>
+      </div>
     </footer>
 
     <script>
-        (function () {
-            const canvas = document.getElementById('starCanvas');
-            const ctx = canvas.getContext('2d');
-            let stars = [], W, H;
+      (function () {
+        const canvas = document.getElementById("starCanvas");
+        const ctx = canvas.getContext("2d");
+        let stars = [],
+          W,
+          H;
 
-            function resize() {
-                W = canvas.width = window.innerWidth;
-                H = canvas.height = window.innerHeight;
-                initStars();
-            }
+        function resize() {
+          W = canvas.width = window.innerWidth;
+          H = canvas.height = window.innerHeight;
+          initStars();
+        }
 
-            function initStars() {
-                stars = [];
-                const count = Math.floor((W * H) / 3000);
-                for (let i = 0; i < count; i++) {
-                    stars.push({
-                        x: Math.random() * W,
-                        y: Math.random() * H,
-                        r: Math.random() * 1.2 + 0.3,
-                        alpha: Math.random(),
-                        alphaSpeed: (Math.random() * 0.015) + 0.005,
-                        vx: (Math.random() - 0.5) * 0.2,
-                        vy: (Math.random() - 0.5) * 0.2
-                    });
-                }
-            }
+        function initStars() {
+          stars = [];
+          const count = Math.floor((W * H) / 3000);
+          for (let i = 0; i < count; i++) {
+            stars.push({
+              x: Math.random() * W,
+              y: Math.random() * H,
+              r: Math.random() * 1.2 + 0.3,
+              alpha: Math.random(),
+              alphaSpeed: Math.random() * 0.015 + 0.005,
+              vx: (Math.random() - 0.5) * 0.2,
+              vy: (Math.random() - 0.5) * 0.2,
+            });
+          }
+        }
 
-            function animate() {
-                ctx.fillStyle = '#000';
-                ctx.fillRect(0, 0, W, H);
+        function animate() {
+          ctx.fillStyle = "#000";
+          ctx.fillRect(0, 0, W, H);
 
-                stars.forEach(star => {
-                    star.alpha += star.alphaSpeed;
-                    if (star.alpha <= 0.2 || star.alpha >= 1) star.alphaSpeed *= -1;
-                    star.x += star.vx; star.y += star.vy;
-                    if (star.x < 0) star.x = W;
-                    if (star.x > W) star.x = 0;
-                    if (star.y < 0) star.y = H;
-                    if (star.y > H) star.y = 0;
-                    ctx.globalAlpha = star.alpha;
-                    ctx.beginPath();
-                    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-                    ctx.fillStyle = '#fff';
-                    ctx.fill();
-                });
+          stars.forEach((star) => {
+            star.alpha += star.alphaSpeed;
+            if (star.alpha <= 0.2 || star.alpha >= 1) star.alphaSpeed *= -1;
+            star.x += star.vx;
+            star.y += star.vy;
+            if (star.x < 0) star.x = W;
+            if (star.x > W) star.x = 0;
+            if (star.y < 0) star.y = H;
+            if (star.y > H) star.y = 0;
+            ctx.globalAlpha = star.alpha;
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+            ctx.fillStyle = "#fff";
+            ctx.fill();
+          });
 
-                ctx.globalAlpha = 1;
-                requestAnimationFrame(animate);
-            }
+          ctx.globalAlpha = 1;
+          requestAnimationFrame(animate);
+        }
 
-            window.addEventListener('resize', resize);
-            resize();
-            animate();
-        })();
+        window.addEventListener("resize", resize);
+        resize();
+        animate();
+      })();
 
-        const form = document.getElementById('contact-form');
-        const statusDiv = document.getElementById('form-status');
+      const form = document.getElementById("contact-form");
+      const statusDiv = document.getElementById("form-status");
 
-        form.addEventListener('submit', async e => {
-            e.preventDefault();
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
 
-            const data = new FormData(form);
-            try {
-                const res = await fetch('https://formspree.io/f/mvgaqyae', {
-                    method: 'POST',
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
-                });
-                if (res.ok) {
-                    statusDiv.textContent = 'Thanks! We’ll be in touch soon.';
-                    statusDiv.className = 'success';
-                    form.reset();
-                } else {
-                    throw new Error('Submission failed');
-                }
-            } catch (err) {
-                statusDiv.textContent = 'Oops! Something went wrong.';
-                statusDiv.className = 'error';
-                console.error(err);
-            }
+        const data = new FormData(form);
+        try {
+          const res = await fetch("https://formspree.io/f/mvgaqyae", {
+            method: "POST",
+            body: data,
+            headers: { Accept: "application/json" },
+          });
+          if (res.ok) {
+            statusDiv.textContent = "Thanks! We’ll be in touch soon.";
+            statusDiv.className = "success";
+            form.reset();
+          } else {
+            throw new Error("Submission failed");
+          }
+        } catch (err) {
+          statusDiv.textContent = "Oops! Something went wrong.";
+          statusDiv.className = "error";
+          console.error(err);
+        }
 
-            setTimeout(() => {
-                statusDiv.textContent = '';
-                statusDiv.className = '';
-            }, 10000);
-        });
+        setTimeout(() => {
+          statusDiv.textContent = "";
+          statusDiv.className = "";
+        }, 10000);
+      });
     </script>
-</body>
-
+  </body>
 </html>
