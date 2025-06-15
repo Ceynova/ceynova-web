@@ -184,7 +184,11 @@
         max-width: 1200px;
         margin: 0 auto 2rem;
         padding: 0 1rem;
-        text-align: left;
+        text-align: center;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .section-header-title {
@@ -204,7 +208,7 @@
       }
 
       .section {
-        padding: 60px 20px;
+        padding: 60px 10px;
         max-width: 1200px;
         margin: 0 auto;
       }
@@ -215,10 +219,7 @@
         }
       }
 
-      .section-header {
-        text-align: center;
-        margin-bottom: 40px;
-      }
+      /* .section-header: styles moved above and extended */
 
       .section-title {
         font-size: 2rem;
@@ -235,67 +236,64 @@
       }
 
       .cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 24px;
-        width: 100%;
+        /* legacy, replaced by .equal-height-cards */
       }
 
-      .card {
-        width: 300px;
-        height: 380px;
+      .equal-height-cards {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(320px, 1fr));
+        gap: 32px;
+        justify-content: center;
+      }
+
+      .equal-height-cards .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        padding: 24px;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         border-radius: 16px;
-        padding: 24px;
-        display: flex;
-        flex-direction: column;
       }
 
-      .card-image {
+      .equal-height-cards .card-image {
         display: flex;
         justify-content: center;
         margin-bottom: 16px;
       }
 
-      .card-image img {
+      .equal-height-cards .card-image img {
         max-width: 150px;
         height: auto;
       }
 
-      .card-title {
+      .equal-height-cards .card-title {
         font-size: 1.25rem;
         margin-bottom: 8px;
         text-align: left;
         color: #fff;
       }
 
-      .card-desc {
+      .equal-height-cards .card-desc {
         font-size: 1rem;
         line-height: 1.5;
         text-align: left;
-        flex: 1 1 auto;
+        flex-grow: 1;
         color: #fff;
       }
 
-      .card hr {
+      .equal-height-cards .card hr {
         border: none;
         border-top: 1px solid rgba(255, 255, 255, 0.3);
         margin: 10px 0;
       }
 
       @media (max-width: 600px) {
-        .cards {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .card {
-          width: 100%;
-          max-width: none;
+        .equal-height-cards {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -720,7 +718,9 @@
             </ul>
           </span>
         </h1>
-        <h1 class="line2">Tailored Software Solutions Built Around Your Needs?</h1>
+        <h1 class="line2">
+          Tailored Software Solutions Built Around Your Needs?
+        </h1>
         <h1 class="brand">CEYNOVA</h1>
         <p class="tagline">Your trusted partner in software innovation</p>
         <div class="btns">
@@ -739,71 +739,79 @@
       <div class="section-header">
         <h2 class="section-title">Our Engineering Services</h2>
         <p class="section-subtitle">
-          We provide top-tier expertise across software, cloud, and data
-          domains.
+          We bring leading-edge expertise to every aspect of software
+          engineering.
         </p>
       </div>
-      <div class="cards">
-        <div class="card">
-          <div class="card-image">
-            <img src="mobile-dev.png" alt="Software Engineering" />
-          </div>
-          <h3 class="card-title">Software Engineering</h3>
-          <hr />
-          <p class="card-desc">
-            We specialize in recruiting and managing top-tier software engineers
-            with the right mix of technical skills and problem-solving
-            abilities.
-          </p>
-        </div>
+      <div class="cards equal-height-cards">
         <div class="card">
           <div class="card-image">
             <img src="mobile-dev.png" alt="Cloud Engineering" />
           </div>
-          <h3 class="card-title">Cloud Engineering</h3>
+          <h3 class="card-title">Mobile & Web Applications</h3>
           <hr />
           <p class="card-desc">
-            Cloud chaos, no more. We’ll help you find the right specialists to
-            build, configure and deploy your architecture at scale.
+            We specialize in designing and developing your next iOS, Android, or
+            cross-platform solution that delivers a consistent, high-quality
+            user experience across mobile and web. Our team ensures your app is
+            secure, scalable, and tailored to your business needs whether you’re
+            launching a consumer product or an internal enterprise tool.
           </p>
         </div>
         <div class="card">
           <div class="card-image">
             <img src="mobile-dev.png" alt="Data Engineering" />
           </div>
-          <h3 class="card-title">Data Engineering</h3>
+          <h3 class="card-title">Desktop Software Solutions</h3>
           <hr />
           <p class="card-desc">
-            Get the most out of your data. We build reliable pipelines and
-            warehouses that become the backbone of your analytics.
+            Our team builds powerful, reliable desktop applications for Windows,
+            macOS, and Linux environments. We focus on delivering
+            performance-driven solutions with intuitive interfaces, whether you
+            need standalone software, integrations with existing systems, or
+            offline-first capabilities for critical business operations.
           </p>
         </div>
         <div class="card">
           <div class="card-image">
             <img src="mobile-dev.png" alt="Security Engineering" />
           </div>
-          <h3 class="card-title">Security Engineering</h3>
+          <h3 class="card-title">Cloud & Infrastructure Solutions</h3>
           <hr />
           <p class="card-desc">
-            Protect your assets with proactive security audits, threat modeling,
-            and 24/7 monitoring from our expert team.
+            We provide end-to-end cloud and infrastructure engineering, helping
+            you leverage the power of platforms like AWS, Azure, and Google
+            Cloud. From architecture design and migration to deployment
+            automation and ongoing optimization, we ensure your cloud solutions
+            are resilient, cost-effective, and ready to scale as your business
+            grows.
           </p>
         </div>
         <div class="card">
           <div class="card-image">
             <img src="mobile-dev.png" alt="ML Engineering" />
           </div>
-          <h3 class="card-title">ML Engineering</h3>
+          <h3 class="card-title">AI & Data Integrations</h3>
           <hr />
           <p class="card-desc">
-            From proof-of-concept to production, we help you ship machine
-            learning models that scale reliably and ethically.
+            We help you unlock the value of your data through intelligent AI
+            integrations. Our expertise covers machine learning models, natural
+            language processing, computer vision, and analytics pipelines
+            designed to seamlessly embed into your software ecosystem and drive
+            smarter decisions, automation, and user experiences. Our experts
+            work closely with you to identify the right AI solutions that align
+            with your budget, security requirements, and scaling needs, ensuring
+            maximum impact and long-term value.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="features-section section" id="partner">
+    <section
+      class="features-section section"
+      id="partner"
+      style="margin-top: 60px"
+    >
       <div class="section-header">
         <h2 class="section-title">Why Choose Us</h2>
         <p class="section-subtitle">Built by experts, backed by results.</p>
