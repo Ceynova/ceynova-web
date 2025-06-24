@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ceynova</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-…your-integrity-hash…"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: #000;
+        color: #fff;
+      }
+
+      section.hero {
+        width: 100%;
+        max-width: 100vw;
+        height: 100vh;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      #starCanvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        padding: 0 5%;
+      }
+
+      .line1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: clamp(1.25rem, 4vw, 2.5rem);
+        line-height: 1.2;
+        color: #fff;
+      }
+
+      .line1 .static {
+        margin-right: 0.5ch;
+        white-space: nowrap;
+      }
+
+      .word-rotator {
+        height: 1.2em;
+        overflow: hidden;
+      }
+
+      .word-rotator ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        animation: slide 8s infinite;
+      }
+
+      .word-rotator li {
+        height: 1.2em;
+        line-height: 1.2em;
+        text-align: left;
+        white-space: nowrap;
+        background: linear-gradient(90deg, #fa812f, #f3c623);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @keyframes slide {
+        0%,
+        12.5% {
+          transform: translateY(0);
+        }
+
+        25%,
+        37.5% {
+          transform: translateY(-1.2em);
+        }
+
+        50%,
+        62.5% {
+          transform: translateY(-2.4em);
+        }
+
+        75%,
+        87.5% {
+          transform: translateY(-3.6em);
+        }
+
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .line2 {
+        margin-top: 0.5rem;
+        font-size: clamp(1.25rem, 4vw, 2.5rem);
+        line-height: 1.2;
+        color: #fff;
+        white-space: normal;
+        overflow-wrap: break-word;
+      }
+
+      .brand {
+        font-family: "Share Tech", monospace;
+        font-size: clamp(4rem, 12vw, 10rem);
+        background: linear-gradient(90deg, #fa812f, #f3c623);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 3rem 0;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 600px) {
+        .brand {
+          font-size: clamp(4rem, 12vw, 9rem);
+        }
+      }
+
+      .tagline {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        color: #a9b0bd;
+        word-wrap: break-word;
+        text-align: center;
+      }
+
+      section.hero .btns a {
+        display: inline-block;
+        margin: 2rem 0;
+        padding: 12px 24px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background 0.3s, opacity 0.3s;
+      }
+
+      section.hero .btns .explore {
+        background: #fff;
+        color: #000;
+      }
+
+      section.hero .btns a:hover {
+        opacity: 0.8;
+      }
+
+      .section-header {
+        max-width: 1200px;
+        margin: 0 auto 2rem;
+        padding: 0 1rem;
+        text-align: center;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section-header-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+        margin: 0;
+        line-height: 1.1;
+        background: linear-gradient(90deg, #fa812f, #f3c623);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .section-header-subtitle {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+        margin: 0.5rem 0 0;
+        color: #a9b0bd;
+        line-height: 1.2;
+      }
+
+      .section {
+        padding: 60px 10px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 600px) {
+        .section {
+          padding: 60px 32px;
+        }
+      }
+
+      /* .section-header: styles moved above and extended */
+
+      .section-title {
+        font-size: 3rem;
+        font-weight: 600;
+        background: linear-gradient(90deg, #fa812f, #f3c623);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 8px;
+      }
+
+      .section-subtitle {
+        font-size: 1.5rem;
+        color: #ccc;
+        margin-bottom: 2.5rem;
+      }
+
+      .cards {
+        /* legacy, replaced by .equal-height-cards */
+      }
+
+      .equal-height-cards {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(320px, 1fr));
+        gap: 32px;
+        justify-content: center;
+      }
+
+      .equal-height-cards .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-radius: 16px;
+      }
+
+      .equal-height-cards .card-image {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+
+      .equal-height-cards .card-image img {
+        max-width: 250px;
+        height: 250px;
+        object-fit: contain;
+      }
+
+      .equal-height-cards .card-title {
+        font-size: 1.25rem;
+        margin-bottom: 8px;
+        text-align: left;
+        color: #fff;
+      }
+
+      .equal-height-cards .card-desc {
+        font-size: 1rem;
+        line-height: 1.5;
+        text-align: left;
+        flex-grow: 1;
+        color: #fff;
+      }
+
+      .equal-height-cards .card hr {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        margin: 10px 0;
+      }
+
+      @media (max-width: 600px) {
+        .equal-height-cards {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .features-section {
+        position: relative;
+      }
+
+      .features-section::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        height: 70%;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(
+          circle at center,
+          rgba(250, 129, 47, 0.125) 0%,
+          rgba(243, 198, 35, 0.125) 50%,
+          transparent 100%
+        );
+        filter: blur(100px);
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .feature-item {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        column-gap: 20px;
+        align-items: start;
+        margin-bottom: 40px;
+      }
+
+      .feature-number {
+        font-size: 3rem;
+        font-weight: bold;
+        background: linear-gradient(90deg, #fa812f, #f3c623);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+      }
+
+      .feature-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin: 0 0 8px;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .feature-desc {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+        color: #fff;
+      }
+
+      .feature-item hr {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        margin: 20px 0 0;
+        width: 100%;
+      }
+
+      @media (max-width: 600px) {
+        .feature-item {
+          grid-template-columns: 1fr;
+          row-gap: 12px;
+        }
+
+        .feature-number {
+          text-align: left;
+        }
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .contact-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .info-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1.5rem;
+        line-height: 1.5;
+      }
+
+      .info-panel p {
+        font-size: 1.1rem;
+        color: #ddd;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 1.1rem;
+        color: #eee;
+      }
+
+      .contact-item i {
+        font-size: 1.5rem;
+        color: #ccc;
+        width: 1.5rem;
+        text-align: center;
+      }
+
+      .contact-item a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .form-cover {
+        background: #111;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      }
+
+      .form-cover h2 {
+        margin-bottom: 1.5rem;
+        font-size: 1.75rem;
+        color: #fff;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #ddd;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: #000;
+        border: 1px solid #333;
+        border-radius: 0.75rem;
+        color: #eee;
+        font-size: 1rem;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: #666;
+      }
+
+      .btn-submit {
+        width: 100%;
+        padding: 1rem;
+        background: #fff;
+        color: #000;
+        font-weight: 600;
+        font-size: 1rem;
+        border: none;
+        border-radius: 2rem;
+        cursor: pointer;
+        transition: opacity 0.3s;
+      }
+
+      .btn-submit:hover {
+        opacity: 0.8;
+      }
+
+      #form-status {
+        margin-top: 1rem;
+        text-align: center;
+        font-weight: 500;
+        color: #eee;
+      }
+
+      #form-status.success {
+        color: #6f6;
+      }
+
+      #form-status.error {
+        color: #f55;
+      }
+
+      .founder-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .founder-img {
+        height: 100%;
+      }
+
+      .founder-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+        display: block;
+      }
+
+      .founder-content {
+        position: relative;
+        background: #fff;
+        border-radius: 16px;
+        padding: 24px;
+        height: 100%;
+      }
+
+      .founder-content .quote-icon {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+      }
+
+      .founder-content .quote-icon i {
+        font-size: 5rem;
+        line-height: 1;
+        color: rgba(0, 0, 0, 0.1);
+      }
+
+      .founder-inner {
+        position: absolute;
+        top: 80px;
+        bottom: 80px;
+        left: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow-y: auto;
+      }
+
+      .founder-inner p {
+        margin: 0 0 16px;
+        line-height: 1.6;
+        color: #555;
+      }
+
+      .founder-info {
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+      }
+
+      .founder-name {
+        font-weight: bold;
+        font-size: 1rem;
+        color: #000;
+        margin: 0;
+      }
+
+      .founder-role {
+        font-size: 0.875rem;
+        color: #666;
+        margin: 4px 0 0;
+      }
+
+      @media (max-width: 600px) {
+        .founder-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .founder-img {
+          width: 100%;
+          height: auto;
+        }
+
+        .founder-img img {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          border-radius: 16px;
+        }
+
+        .founder-content {
+          position: relative;
+          width: 100%;
+          padding: 16px;
+          box-sizing: border-box;
+        }
+
+        .founder-inner,
+        .founder-info,
+        .founder-content .quote-icon {
+          position: static;
+        }
+
+        .founder-inner {
+          overflow-y: visible;
+          margin-bottom: 16px;
+        }
+
+        .founder-content .quote-icon {
+          font-size: 4rem;
+          margin-bottom: 10px;
+        }
+      }
+
+      .site-footer {
+        width: 100%;
+        background: #000;
+        padding: 20px 0 60px;
+        margin-bottom: 50px;
+      }
+
+      .site-footer .footer-line {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        width: 80%;
+        margin: 0 auto 16px;
+      }
+
+      .site-footer .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .site-footer p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        text-align: center;
+        margin: 0;
+      }
+
+      #starCanvas {
+        z-index: -2;
+      }
+
+      section.hero::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 80%;
+        height: 80%;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(
+          circle at center,
+          rgba(250, 129, 47, 0.125) 0%,
+          rgba(243, 198, 35, 0.125) 50%,
+          transparent 100%
+        );
+        filter: blur(100px);
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .bottom-nav {
+        position: fixed;
+        bottom: env(safe-area-inset-bottom, 1rem);
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 1.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 2rem;
+        z-index: 1000;
+        margin-bottom: 2rem;
+      }
+
+      .bottom-nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.25rem;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50%;
+        transition: background 0.3s, color 0.3s;
+      }
+
+      .bottom-nav a.active {
+        background: #fff;
+        color: #000;
+      }
+
+      @media (max-width: 320px) {
+        .bottom-nav {
+          padding: 0.25rem 0.5rem;
+          gap: 1rem;
+        }
+
+        .bottom-nav a {
+          width: 2rem;
+          height: 2rem;
+          font-size: 1rem;
+        }
+      }
+
+      .brand-logo {
+        max-width: 70%;
+        height: auto;
+        display: block;
+        margin: 3rem auto;
+        padding: 0 1rem;
+        object-fit: contain;
+      }
+
+      @media (max-width: 768px) {
+        .brand-logo {
+          max-width: 90%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="hero">
+      <canvas id="starCanvas"></canvas>
+      <div class="hero-content">
+        <h1 class="line1">
+          <span class="static">Looking for</span>
+          <span class="word-rotator">
+            <ul>
+              <li>Reliable</li>
+              <li>Scalable</li>
+              <li>Innovative</li>
+              <li>Secure</li>
+            </ul>
+          </span>
+        </h1>
+        <h1 class="line2">
+          Tailored Software Solutions Built Around Your Needs?
+        </h1>
+        <img src="assets/logo.png" alt="Ceynova Logo" class="brand-logo" />
+        <p class="tagline">Your trusted partner in software innovation</p>
+        <div class="btns">
+          <a href="#contact" class="explore">Contact &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="bottom-nav">
+      <a href="#services"><i class="fas fa-rss"></i></a>
+      <a href="#partner"><i class="fas fa-user"></i></a>
+      <a href="#contact"><i class="fas fa-phone"></i></a>
+    </nav>
+
+    <section class="card-section section" id="services">
+      <div class="section-header">
+        <h2 class="section-title">Our Engineering Services</h2>
+        <p class="section-subtitle">
+          We bring leading-edge expertise to every aspect of software
+          engineering.
+        </p>
+      </div>
+      <div class="cards equal-height-cards">
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/mobile.png" alt="Cloud Engineering" />
+          </div>
+          <h3 class="card-title">Mobile and Web Applications</h3>
+          <hr />
+          <p class="card-desc">
+            We specialize in designing and developing your next iOS, Android, or
+            cross-platform solution that delivers a consistent, high-quality
+            user experience across mobile and web. Our team ensures your app is
+            secure, scalable, and tailored to your business needs whether you’re
+            launching a consumer product or an internal enterprise tool.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/desktop.png" alt="Data Engineering" />
+          </div>
+          <h3 class="card-title">Desktop Software Solutions</h3>
+          <hr />
+          <p class="card-desc">
+            Our team builds powerful, reliable desktop applications for Windows,
+            macOS, and Linux environments. We focus on delivering
+            performance-driven solutions with intuitive interfaces, whether you
+            need standalone software, integrations with existing systems, or
+            offline-first capabilities for critical business operations.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/cloud.png" alt="Security Engineering" />
+          </div>
+          <h3 class="card-title">Cloud and Infrastructure Solutions</h3>
+          <hr />
+          <p class="card-desc">
+            We provide end-to-end cloud and infrastructure engineering, helping
+            you leverage the power of platforms like AWS, Azure, and Google
+            Cloud. From architecture design and migration to deployment
+            automation and ongoing optimization, we ensure your cloud solutions
+            are resilient, cost-effective, and ready to scale as your business
+            grows.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="assets/AI.png" alt="ML Engineering" />
+          </div>
+          <h3 class="card-title">AI and Data Integrations</h3>
+          <hr />
+          <p class="card-desc">
+            We help you unlock the value of your data through intelligent AI
+            integrations. Our expertise covers machine learning models, natural
+            language processing, computer vision, and analytics pipelines
+            designed to seamlessly embed into your software ecosystem and drive
+            smarter decisions, automation, and user experiences. Our experts
+            work closely with you to identify the right AI solutions that align
+            with your budget, security requirements, and scaling needs, ensuring
+            maximum impact and long-term value.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="features-section section"
+      id="partner"
+      style="margin-top: 60px"
+    >
+      <div class="section-header">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <p class="section-subtitle">
+          Built by experts. Driven by passion. Powered by innovation. Trusted
+          for value and affordability.
+        </p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-number">01</div>
+        <div class="feature-content">
+          <h4 class="feature-title">
+            <strong>Led by Proven Experts:</strong>
+          </h4>
+          <p class="feature-desc">
+            Gain confidence from working with a team led by industry veterans
+            who bring deep technical expertise and visionary thinking to every
+            project.
+          </p>
+          <hr />
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-number">02</div>
+        <div class="feature-content">
+          <h4 class="feature-title">
+            <strong>Powered by a Global Network of Talent:</strong>
+          </h4>
+          <p class="feature-desc">
+            Our diverse, distributed team of passionate developers combines
+            innovative solutions with real-world experience to deliver
+            exceptional results—wherever you are.
+          </p>
+          <hr />
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-number">03</div>
+        <div class="feature-content">
+          <h4 class="feature-title">
+            <strong>Trusted Experience, Affordable Excellence:</strong>
+          </h4>
+          <p class="feature-desc">
+            Our team of seasoned engineers brings years of individual experience
+            delivering impactful software. We provide high-quality solutions
+            that balance performance, security, and affordability earning the
+            trust of clients worldwide.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="founder-section section">
+      <div class="section-header">
+        <h2 class="section-title">A Note from Founder</h2>
+        <p class="section-subtitle">
+          At CeyNova, we are driven by passion, innovation, and a commitment to
+          building trusted solutions that make a real impact.
+        </p>
+      </div>
+      <div class="founder-grid">
+        <div class="founder-img">
+          <img src="assets/dilum-image.JPG" alt="Founder" />
+        </div>
+        <div class="founder-content">
+          <div class="quote-icon">
+            <i class="fa-solid fa-quote-left"></i>
+          </div>
+          <div class="founder-inner">
+            <p>Ayubowan, Kia ora,</p>
+            <p>
+              At CeyNova, we’re a passionate team dedicated to making technology
+              accessible through smart, scalable software that solves everyday
+              challenges.
+            </p>
+            <p>
+              We take pride in earning our clients’ trust by delivering
+              high-quality, secure solutions that grow with their needs.
+            </p>
+            <p>
+              I warmly invite anyone seeking software solutions to work with us
+              and experience the difference that world-class engineering from
+              the CeyNova team can make.
+            </p>
+          </div>
+          <div class="founder-info">
+            <div class="founder-name">Dilum De Silva</div>
+            <div class="founder-role">Google Developer Expert</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section section">
+      <div class="section-header">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">
+          Explore answers to common questions and learn how we can help bring
+          your ideas to life with smart, reliable solutions.
+        </p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          What types of software solutions do you provide?
+          <span class="toggle-icon">-</span>
+        </button>
+        <div class="faq-answer">
+          We provide end-to-end solutions including mobile and web app
+          development, desktop applications, cloud and infrastructure
+          engineering, and AI &amp; data integrations. Each solution is tailored
+          to your business needs and goals.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Do you offer cloud migration and infrastructure setup?
+          <span class="toggle-icon">-</span>
+        </button>
+        <div class="faq-answer">
+          Yes, our team provides full cloud migration, architecture design,
+          deployment automation, and optimization on platforms like AWS, Azure,
+          and Google Cloud.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          How does Ceynova integrate AI into software solutions?
+          <span class="toggle-icon">-</span>
+        </button>
+        <div class="faq-answer">
+          We integrate AI through machine learning models, NLP, computer vision,
+          and analytics pipelines, ensuring these are seamlessly embedded into
+          your software to enhance automation, insights, and user experience.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Can you build cross-platform mobile and web apps?
+          <span class="toggle-icon">-</span>
+        </button>
+        <div class="faq-answer">
+          Absolutely! We build secure, scalable cross-platform apps that deliver
+          consistent, high-quality experiences across iOS, Android, and web
+          platforms.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Do you provide ongoing support and maintenance?
+          <span class="toggle-icon">-</span>
+        </button>
+        <div class="faq-answer">
+          Yes, we provide long-term support, including updates, security
+          monitoring, backups, and technical assistance to keep your solutions
+          reliable and secure.
+        </div>
+      </div>
+    </section>
+    <style>
+      .faq-item {
+        margin-bottom: 1rem;
+      }
+      .faq-question {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.25rem;
+        padding: 0.75rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .faq-answer {
+        padding: 0.75rem;
+        color: #ccc;
+        display: none;
+      }
+      .faq-item.active .faq-answer {
+        display: block;
+      }
+    </style>
+    <script>
+      document.querySelectorAll(".faq-question").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = button.parentElement;
+          item.classList.toggle("active");
+        });
+      });
+    </script>
+
+    <section class="contact-section section" id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">We’d love to hear from you.</p>
+      </div>
+      <div class="contact-container">
+        <div class="info-panel">
+          <p>
+            Have a question or a unique idea? Our team is here to listen, answer
+            your questions, and explore how we can bring your vision to life
+            with smart, reliable software solutions tailored to your needs.
+          </p>
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:ceynovait@gmail.com">ceynovait@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:+642108335719">+64 21 083 35719</a>
+          </div>
+        </div>
+
+        <div class="form-cover">
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="John Doe"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company / Organization</label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                placeholder="Company (optional)"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="+1 (555) 123-4567"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Tell us more..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Send Message</button>
+            <div id="form-status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <hr class="footer-line" />
+      <div class="container">
+        <p>Copyright © 2025 • Developed by team Ceynova</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        const canvas = document.getElementById("starCanvas");
+        const ctx = canvas.getContext("2d");
+        let stars = [],
+          W,
+          H;
+
+        function resize() {
+          W = canvas.width = window.innerWidth;
+          H = canvas.height = window.innerHeight;
+          initStars();
+        }
+
+        function initStars() {
+          stars = [];
+          const count = Math.floor((W * H) / 3000);
+          for (let i = 0; i < count; i++) {
+            stars.push({
+              x: Math.random() * W,
+              y: Math.random() * H,
+              r: Math.random() * 1.2 + 0.3,
+              alpha: Math.random(),
+              alphaSpeed: Math.random() * 0.015 + 0.005,
+              vx: (Math.random() - 0.5) * 0.2,
+              vy: (Math.random() - 0.5) * 0.2,
+            });
+          }
+        }
+
+        function animate() {
+          ctx.fillStyle = "#000";
+          ctx.fillRect(0, 0, W, H);
+
+          stars.forEach((star) => {
+            star.alpha += star.alphaSpeed;
+            if (star.alpha <= 0.2 || star.alpha >= 1) star.alphaSpeed *= -1;
+            star.x += star.vx;
+            star.y += star.vy;
+            if (star.x < 0) star.x = W;
+            if (star.x > W) star.x = 0;
+            if (star.y < 0) star.y = H;
+            if (star.y > H) star.y = 0;
+            ctx.globalAlpha = star.alpha;
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+            ctx.fillStyle = "#fff";
+            ctx.fill();
+          });
+
+          ctx.globalAlpha = 1;
+          requestAnimationFrame(animate);
+        }
+
+        window.addEventListener("resize", resize);
+        resize();
+        animate();
+      })();
+
+      const form = document.getElementById("contact-form");
+      const statusDiv = document.getElementById("form-status");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        const data = new FormData(form);
+        try {
+          const res = await fetch("https://formspree.io/f/mvgaqyae", {
+            method: "POST",
+            body: data,
+            headers: { Accept: "application/json" },
+          });
+          if (res.ok) {
+            statusDiv.textContent = "Thanks! We’ll be in touch soon.";
+            statusDiv.className = "success";
+            form.reset();
+          } else {
+            throw new Error("Submission failed");
+          }
+        } catch (err) {
+          statusDiv.textContent = "Oops! Something went wrong.";
+          statusDiv.className = "error";
+          console.error(err);
+        }
+
+        setTimeout(() => {
+          statusDiv.textContent = "";
+          statusDiv.className = "";
+        }, 10000);
+      });
+    </script>
+  </body>
+</html>
